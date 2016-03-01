@@ -8,6 +8,7 @@
           </br>
           <div class="btn-pricing"><%= item.formatted_price %></div>
         </button>
+        <%= button_to "Add to Cart", cart_items_path(item_id: item.id), class: "btn item-btn mousiness btn-font-size" %>
       </div>
     </div>
   <% end %>
