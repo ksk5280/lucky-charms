@@ -16,8 +16,12 @@ RSpec.feature "Visitor can view items" do
     within ".items" do
       expect(page).to have_content "Lucky Penny"
       expect(page).to have_content "$10.00"
+      expect(page).to have_css("img[alt='Lucky Penny']")
+      expect(page).to have_css("img[src=\"/images/Penny.png\"]")
       expect(page).to have_content "Horse Shoe"
       expect(page).to have_content "$20.00"
+      expect(page).to have_css("img[alt='Horse Shoe']")
+      expect(page).to have_css("img[src=\"/images/horseshoe.png\"]")
     end
   end
 end

@@ -3,7 +3,7 @@
 
   <div class="cart-items">
     <% @cart_contents.each do |item, quantity| %>
-    <img src="<%= item.image %>" alt="#{item.title} image">
+    <img src="<%= item.image %>" alt="<%= item.title %>">
       <p><%= item.title %></p>
       <p><%= item.description %></p>
       <p><%= item.formatted_price %></p>
