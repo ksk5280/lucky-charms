@@ -1,9 +1,15 @@
 <h1><%= "All #{@category.title} Products" %></h1>
 
 <div class="items">
-  <ul>
-    <% @items.each do |item| %>
-      <li><%= item.title %></li>
-    <% end %>
-  </ul>
+  <% @items.each do |item| %>
+    <div class="col-md-4">
+        <div class="item-display">
+          <!-- <img class="img-responsive center-block"src="/images/horsehoe.png" alt="horseshoe"> -->
+          <p><strong>San Francisco</strong></p>
+          <p><%= item.title %></p>
+          <p>Yes, San Fran is ours</p>
+        </div>
+      </div>
+    </div>
+  <% end %>
 </div>
