@@ -1,0 +1,15 @@
+<h1>Your Cart</h1>
+<div class="cart-container">
+
+  <div class="cart-items">
+    <% @cart_contents.each do |item, quantity| %>
+    <img src="<%= item.image %>" alt="#{item.title} image">
+      <p><%= item.title %></p>
+      <p><%= item.description %></p>
+      <p><%= item.formatted_price %></p>
+      <p>Qty. <%= quantity %></p>
+    <% end %>
+  </div>
+
+Total: <%= @cart.total %>
+</div>

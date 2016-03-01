@@ -8,9 +8,14 @@
   <%= csrf_meta_tags %>
   <meta name="viewport" content="width=device-width, initial-scale=1"></head>
 <body class = "body-bg">
-<div class="container">
-  <%= yield %>
-</div>
+
+  <div class="container">
+    <% flash.each do |name, msg| %>
+      <%= content_tag :div, msg, class: "alert alert-#{name}" %>
+    <% end %>
+    <%= render partial: "shared/navbar", locals: { cart_count: @cart.item_count } %>
+    <%= yield %>
+  </div>
 
 </body>
 </html>
