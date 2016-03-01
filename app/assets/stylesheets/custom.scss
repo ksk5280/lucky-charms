@@ -4,6 +4,7 @@ $white: #ffffff;
 $smokywhite: #f5f5f5;
 $darkgreen: #006600;
 $mediumgreen: #7ab55c;
+$translucentwhite: rgba(255, 255, 255, 0.4);
 
 h1 {
   font-size: 56px;
@@ -19,9 +20,9 @@ h4 {
 }
 
 .well {
-  border-radius: 50px;
-  background-color: rgba(255, 255, 255, 0.4);
+  background-color: $translucentwhite;
   border: 4px solid $white;
+  border-radius: 50px;
 
 }
 
@@ -31,7 +32,7 @@ h4 {
 }
 
 .green-font {
-  color: $darkgreen
+  color: $darkgreen;
 
 }
 
@@ -46,9 +47,10 @@ h4 {
 }
 
 .btn-pricing {
-  font-size: 22px;
-  font-family: "Source Sans Pro", "HelveticaNeue"," Helvetica Neue", sans-serif;
   color: $darkblue;
+  font-family: "Source Sans Pro", "HelveticaNeue"," Helvetica Neue", sans-serif;
+  font-size: 22px;
+
 }
 
 .item-btn {
@@ -58,11 +60,11 @@ h4 {
 }
 
 .item-display {
-  padding: 25px 0 25px 0;
+  background-color: $smokywhite;
   border: 2px solid $white;
   border-radius: 10px;
-  background-color: $smokywhite;
   margin-bottom: 25px;
+  padding: 25px 0;
 
 }
 
@@ -73,7 +75,7 @@ h4 {
 }
 
 .padded-bottom {
-  margin-bottom: 50px;
   border-bottom: 4px solid $white;
+  margin-bottom: 50px;
 
 }

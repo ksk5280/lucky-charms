@@ -1,22 +1,9 @@
 <div class="well">
   <div class="text-center row">
     <div class="padded-bottom">
-    <h1 class="green-font mousiness" >All Items</h1>
-    <h4 class="green-font mousiness" >These glorious items will increase your luck.</h4>
+      <h1 class="green-font mousiness" >All Items</h1>
+      <h4 class="green-font mousiness" >These glorious items will increase your luck.</h4>
     </div>
-    <div class="items">
-      <% @items.each do |item| %>
-        <div class="col-md-4">
-          <div class="item-display">
-            <img src="<%= item.image %>" alt="San Francisco">
-            <button class="btn item-btn mousiness btn-font-size">
-              <%= item.title %>
-              </br>
-              <div class="btn-pricing"><%= item.formatted_price %></div>
-            </button>
-          </div>
-        </div>
-      <% end %>
-    </div>
+    <%= render "shared/items_display" %>
   </div>
 </div>

@@ -1,15 +1,9 @@
-<h1><%= "All #{@category.title} Products" %></h1>
-
-<div class="items">
-  <% @items.each do |item| %>
-    <div class="col-md-4">
-        <div class="item-display">
-          <!-- <img class="img-responsive center-block"src="/images/horsehoe.png" alt="horseshoe"> -->
-          <p><strong>San Francisco</strong></p>
-          <p><%= item.title %></p>
-          <p>Yes, San Fran is ours</p>
-        </div>
-      </div>
+<div class="well">
+  <div class="text-center row">
+    <div class="padded-bottom">
+      <h1 class="green-font mousiness" ><%= "All #{@category.title} Products" %></h1>
+      <h4 class="green-font mousiness" >These glorious items will increase your luck.</h4>
     </div>
-  <% end %>
+    <%= render "shared/items_display" %>
+  </div>
 </div>
