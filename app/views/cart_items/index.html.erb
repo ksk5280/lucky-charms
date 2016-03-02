@@ -1,6 +1,5 @@
-<h1>Your Cart</h1>
-<div class="cart-container">
-
+<div class="cart-container well">
+  <h1>Your Cart</h1>
   <div class="cart-items">
     <% @cart_contents.each do |item, quantity| %>
     <img src="<%= item.image %>" alt="#{item.title} image">

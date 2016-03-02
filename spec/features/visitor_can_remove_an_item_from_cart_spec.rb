@@ -29,4 +29,21 @@ RSpec.feature "visitor removes an item from their cart" do
       expect(page).not_to have_css("img[src=\"/images/Penny.png\"]")
     end
   end
+
+  scenario "they accidentally remove item and click on backup link" do
+    cat1 = Category.create(title: "charms")
+    cat1.items.create(title: "Lucky Penny",
+                      description: "Shiny",
+                      price: 1000,
+                      image: "/images/Penny.png",)
+    visit "/items"
+    click_on "Add to Cart"
+    visit "/cart"
+    click_link "Remove"
+
+    click_link "Lucky Penny"
+
+    expect(page).to have_content("Lucky Penny")
+    expect(page).to have_button("Add to Cart")
+  end
 end

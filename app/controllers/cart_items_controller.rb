@@ -20,7 +20,6 @@ class CartItemsController < ApplicationController
 
     flash[:success] = message
     @cart.remove_item(@item.id)
-    Item.destroy(@item.id)
 
     redirect_to cart_path
   end
