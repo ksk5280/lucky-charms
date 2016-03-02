@@ -3,10 +3,10 @@ require "rails_helper"
 RSpec.feature "visitor can add items to cart" do
   scenario "visitor sees items and total price in cart" do
     cat1 = Category.create(title: "charms")
-    cat1.items << Item.create(title: "Lucky Penny",
-                              description: "Shiny",
-                              price: 1000,
-                              image: "/images/Penny.png",)
+    cat1.items.create(title: "Lucky Penny",
+                      description: "Shiny",
+                      price: 1000,
+                      image: "/images/Penny.png",)
 
     visit "/items"
     expect(page).to have_content("Cart (0)")
