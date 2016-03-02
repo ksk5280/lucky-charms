@@ -6,7 +6,7 @@ class CartItemsController < ApplicationController
 
     flash[:success] = "#{@item.title} added to cart!"
 
-    redirect_to items_path
+    redirect_to :back
   end
 
   def index

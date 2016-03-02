@@ -8,6 +8,7 @@
       <p><%= item.description %></p>
       <p><%= item.formatted_price %></p>
       <p>Qty. <%= quantity %></p>
+      <%= button_to "Increase quantity", cart_items_path(:item_id => item.id) %>
     <% end %>
   </div>
 
