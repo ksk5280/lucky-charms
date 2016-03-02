@@ -4,6 +4,8 @@
       <h1 class="green-font mousiness" ><%= "All #{@category.title} Products" %></h1>
       <h4 class="green-font mousiness" >These glorious items will increase your luck.</h4>
     </div>
-    <%= render "shared/items_display" %>
+    <div class="items">
+      <%= render partial: "items/item", collection: @items %>
+    </div>
   </div>
 </div>
