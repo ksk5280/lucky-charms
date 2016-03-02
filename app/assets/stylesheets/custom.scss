@@ -14,7 +14,32 @@ h4 {
   font-size: 32px;
 }
 
+.navbar {
+    margin-bottom: 0;
+    background-color: $white;
+    border: 0;
+    font-size: 22px !important;
+    letter-spacing: 4px;
+    opacity: 0.9;
+}
+
+.big-big-font {
+  margin-left: 40px;
+  margin-right: 40px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-size: 62px;
+  font-family: 'Mouse Memoirs', sans-serif;
+  color: $darkgreen;
+}
+
+.cart-link {
+  margin: 20px;
+
+}
+
 .body-bg {
+  margin-top: 120px;
   background-color: $powderblue;
 
 }
