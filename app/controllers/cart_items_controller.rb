@@ -1,13 +1,8 @@
 class CartItemsController < ApplicationController
   def create
     @item = Item.find(params[:item_id])
-    if params[:subtract]
-      @cart.remove_item(@item.id)
-      flash[:danger] = "#{@item.title} removed from cart!"
-    else
-      @cart.add_item(@item.id)
-      flash[:success] = "#{@item.title} added to cart!"
-    end
+    status, message = @cart.update_quantity(params[:subtract], @item)
+    flash[status] = message
     session[:cart] = @cart.contents
     redirect_to :back
   end
