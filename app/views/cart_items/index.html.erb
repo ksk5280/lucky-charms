@@ -8,6 +8,7 @@
       <p><%= item.description %></p>
       <p><%= item.formatted_price %></p>
       <p>Qty. <%= quantity %></p>
+      <%= link_to "Remove", cart_item_path(item.id), class: "btn btn-danger item-btn mousiness btn-font-size", method: "delete" %>
     <% end %>
   </div>
 
