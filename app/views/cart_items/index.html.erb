@@ -1,5 +1,8 @@
 <div class="cart-container well">
-  <h1>Your Cart</h1>
+  <div class="text-center row">
+    <div class="padded-bottom">
+      <h1 class="green-font mousiness">Your Cart</h1>
+    </div>
   <div class="cart-items">
     <% @cart_contents.each do |item, quantity| %>
     <img src="<%= item.image %>" alt="<%= item.title %>">
@@ -15,6 +18,10 @@
       <%= button_to "Remove", cart_item_path(item.id), class: "btn btn-danger item-btn mousiness btn-font-size", method: "delete" %>
     <% end %>
   </div>
-
-Total: <%= @cart.total %>
+  </div>
+  <div class="text-right row">
+    <div class="padded-top">
+      <h2 class="green-font mousiness padded-right">Total: <%= @cart.total %></h2>
+    </div>
+  </div>
 </div>

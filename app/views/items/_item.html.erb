@@ -1,11 +1,13 @@
 <div class="col-md-4">
   <div class="item-display">
     <img src="<%= item.image %>" alt="<%= item.title %>">
-    <button class="btn item-btn mousiness btn-font-size">
-      <%= item.title %>
-      </br>
-      <div class="btn-pricing"><%= item.formatted_price %></div>
-    </button>
-    <%= button_to "Add to Cart", cart_items_path(item_id: item.id), class: "btn item-btn mousiness btn-font-size" %>
+    <div class="item-description text-center">
+    <div class="mousiness btn-font-size green-font">
+      <h3><%= item.title %></h3>
+    </div>
+    <div class="btn-pricing"><%= item.formatted_price %></div>
+    <%= button_to "Add to Cart", cart_items_path(item_id: item.id),
+        class: "btn item-btn mousiness btn-font-size" %>
+    </div>
   </div>
 </div>
