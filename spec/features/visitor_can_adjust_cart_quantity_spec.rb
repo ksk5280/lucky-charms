@@ -11,7 +11,7 @@ RSpec.feature "Visitor can adjust cart quantity" do
     visit "/items"
     click_on "Add to Cart"
     click_on "Cart"
-    visit "/cart_items"
+    visit "/cart"
   end
 
   scenario "they can add additional items to the cart" do
@@ -19,6 +19,7 @@ RSpec.feature "Visitor can adjust cart quantity" do
       expect(page).to have_content("Lucky Penny")
       expect(page).to have_content("$10.00")
       expect(page).to have_content("Qty. 1")
+      expect(page).to have_content("Subtotal: $10.00")
     end
 
     within(".cart-container") do
@@ -27,12 +28,12 @@ RSpec.feature "Visitor can adjust cart quantity" do
 
     click_on "Increase quantity"
 
-    expect(current_path).to eq("/cart_items")
+    expect(current_path).to eq("/cart")
 
     within(".cart-items") do
       expect(page).to have_content("Lucky Penny")
-      expect(page).to have_content("$20.00")
       expect(page).to have_content("Qty. 2")
+      expect(page).to have_content("Subtotal: $20.00")
     end
 
     within(".cart-container") do
@@ -44,11 +45,11 @@ RSpec.feature "Visitor can adjust cart quantity" do
     visit "/items"
     click_on "Add to Cart"
     click_on "Cart"
-    visit "/cart_items"
+    visit "/cart"
 
     click_on "Decrease quantity"
 
-    expect(current_path).to eq(cart_items_path)
+    expect(current_path).to eq(cart_path)
 
     within(".cart-items") do
       expect(page).to have_content("Lucky Penny")
@@ -63,7 +64,18 @@ RSpec.feature "Visitor can adjust cart quantity" do
 
   context "they decrease quantity to zero" do
     scenario "they see the item removed from the cart" do
-      skip
+      click_on "Decrease quantity"
+
+      within(".cart-items") do
+        expect(page).not_to have_content("Lucky Penny")
+        expect(page).not_to have_content("$10.00")
+        expect(page).not_to have_content("Qty. 1")
+        expect(page).not_to have_content("Subtotal: ")
+      end
+
+      within(".cart-container") do
+        expect(page).to have_content("Total: $0.00")
+      end
     end
   end
 end

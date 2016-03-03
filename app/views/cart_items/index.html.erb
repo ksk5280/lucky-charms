@@ -1,6 +1,5 @@
-<h1>Your Cart</h1>
-<div class="cart-container">
-
+<div class="cart-container well">
+  <h1>Your Cart</h1>
   <div class="cart-items">
     <% @cart_contents.each do |item, quantity| %>
     <img src="<%= item.image %>" alt="<%= item.title %>">
@@ -13,6 +12,7 @@
       <p>Subtotal:
         <%= "#{format('$%.2f', (item.price * quantity / 100.0))}" %>
       </p>
+      <%= button_to "Remove", cart_item_path(item.id), class: "btn btn-danger item-btn mousiness btn-font-size", method: "delete" %>
     <% end %>
   </div>
 
