@@ -23,4 +23,12 @@ RSpec.feature "Visitor can browse items by category" do
       expect(page).to have_content "Lucky Item 6"
     end
   end
+
+  context "they visit a url for an unknown category" do
+    scenario "they see the 404 page" do
+      visit "/jdklsjfds"
+
+      expect(page).to have_content "The page you were looking for doesn't exist"
+    end
+  end
 end
