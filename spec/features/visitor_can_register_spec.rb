@@ -47,7 +47,6 @@ RSpec.feature "logged in user sees items in cart put there before logging in" do
     expect(page).to have_content(category.items.first.title)
     expect(page).to_not have_content(category.items[1].title)
     expect(page).to_not have_content(category.items.last.title)
-
   end
 end
 RSpec.feature "clicking logout ends session and changes login/out link" do
