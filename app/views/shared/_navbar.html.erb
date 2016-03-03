@@ -1,9 +1,16 @@
 <nav class="navbar navbar-fixed-top">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand big-big-font" href="#">Lucky Charms</a>
+      <a class="navbar-brand big-big-font" href="<%= items_path %>">Lucky Charms</a>
     </div>
     <ul class="nav navbar-nav navbar-right">
+      <li class="mousiness">
+        <% if current_user %>
+          <%= link_to "Logout", logout_path, method: :delete, class: "cart-link" %>
+        <% else %>
+          <%= link_to "Login", login_path, class: "cart-link" %>
+        <% end %>
+      </li>
       <li class="mousiness">
       <a href="<%= cart_path %>" class="cart-link">
       <span class="glyphicon glyphicon-shopping-cart"></span> Cart
