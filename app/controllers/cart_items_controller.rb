@@ -1,10 +1,10 @@
 class CartItemsController < ApplicationController
   def create
     @item = Item.find(params[:item_id])
-    @cart.add_item(@item.id)
+    status, message = @cart.update_quantity(params[:subtract], @item)
+    flash[status] = message
     session[:cart] = @cart.contents
-    flash[:success] = "#{@item.title} added to cart!"
-    redirect_to items_path
+    redirect_to :back
   end
 
   def index
@@ -18,8 +18,8 @@ class CartItemsController < ApplicationController
 
     message = %[Successfully removed <a href="#{item_path(@item.id)}" class="alert-link">#{@item.title}</a> from your cart.]
 
-    flash[:success] = message
     @cart.remove_item(@item.id)
+    flash[:success] = message
 
     redirect_to cart_path
   end

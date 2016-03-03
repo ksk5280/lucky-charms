@@ -11,8 +11,9 @@ RSpec.feature "visitor removes an item from their cart" do
     click_on "Add to Cart"
 
     visit "/cart"
+    save_and_open_page
 
-    click_link "Remove"
+    click_on "Remove"
 
     expect(current_path).to eq "/cart"
 
@@ -39,7 +40,7 @@ RSpec.feature "visitor removes an item from their cart" do
     visit "/items"
     click_on "Add to Cart"
     visit "/cart"
-    click_link "Remove"
+    click_on "Remove"
 
     click_link "Lucky Penny"
 
