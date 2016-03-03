@@ -10,7 +10,7 @@ RSpec.feature "Visitor can adjust cart quantity" do
 
     visit "/items"
     click_on "Add to Cart"
-    click_on "Cart"
+    click_link "Cart"
     visit "/cart"
   end
 
@@ -44,7 +44,7 @@ RSpec.feature "Visitor can adjust cart quantity" do
   scenario "they can remove items from the cart" do
     visit "/items"
     click_on "Add to Cart"
-    click_on "Cart"
+    click_link "Cart"
     visit "/cart"
 
     click_on "Decrease quantity"
