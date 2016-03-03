@@ -12,7 +12,7 @@ RSpec.feature "visitor can add items to cart" do
     expect(page).to have_content("Lucky Item 1 added to cart!")
     expect(page).to have_content("Cart (1)")
 
-    click_on "Cart"
+    click_link "Cart"
 
     expect(current_path).to eq "/cart_items"
 
