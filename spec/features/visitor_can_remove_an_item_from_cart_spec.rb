@@ -11,7 +11,6 @@ RSpec.feature "visitor removes an item from their cart" do
     click_on "Add to Cart"
 
     visit "/cart"
-    save_and_open_page
 
     click_on "Remove"
 

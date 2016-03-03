@@ -64,7 +64,18 @@ RSpec.feature "Visitor can adjust cart quantity" do
 
   context "they decrease quantity to zero" do
     scenario "they see the item removed from the cart" do
-      skip
+      click_on "Decrease quantity"
+
+      within(".cart-items") do
+        expect(page).not_to have_content("Lucky Penny")
+        expect(page).not_to have_content("$10.00")
+        expect(page).not_to have_content("Qty. 1")
+        expect(page).not_to have_content("Subtotal: ")
+      end
+
+      within(".cart-container") do
+        expect(page).to have_content("Total: $0.00")
+      end
     end
   end
 end
