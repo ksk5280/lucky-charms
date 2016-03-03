@@ -20,7 +20,7 @@ RSpec.feature "visitor can add items to cart" do
       expect(page).to have_content("Lucky Item 1")
       expect(page).to have_content("1 description")
       expect(page).to have_content("$0.01")
-      expect(page).to have_css("img[src=\"http://bit.ly/1RlgZV5\"]")
+      expect(page).to have_css("img[src=\"/images/horseshoe.png\"]")
     end
 
     within(".cart-container") do
