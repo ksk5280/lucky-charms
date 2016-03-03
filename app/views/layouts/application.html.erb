@@ -10,10 +10,8 @@
 <body class = "body-bg">
 
   <div class="container">
-    <% flash.each do |name, msg| %>
-      <%= content_tag :div, msg, class: "alert alert-#{name}" %>
-    <% end %>
     <%= render partial: "shared/navbar", locals: { cart_count: @cart.item_count } %>
+    <%= render partial: "shared/flash_messages" %>
     <%= yield %>
   </div>
 

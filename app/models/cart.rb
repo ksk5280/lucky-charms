@@ -9,9 +9,20 @@ class Cart
     contents.values.sum
   end
 
-  def add_item(item_id)
-    contents[item_id.to_s] ||= 0
-    contents[item_id.to_s] += 1
+  def update_quantity(subtract, item)
+    contents[item.id.to_s] ||= 0
+    if subtract
+      contents[item.id.to_s] -= 1
+      remove_item(item.id) if contents[item.id.to_s] == 0
+      [:danger, "1 #{item.title} removed from cart!"]
+    else
+      contents[item.id.to_s] += 1
+      [:success, "1 #{item.title} added to cart!"]
+    end
+  end
+
+  def remove_item(item_id)
+    contents.delete(item_id.to_s)
   end
 
   def fetch_items

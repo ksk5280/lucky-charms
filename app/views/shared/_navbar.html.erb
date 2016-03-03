@@ -1,9 +1,10 @@
-<nav class="navbar navbar-fixed-top">
+<<<<<<< HEAD
+<nav class="navbar navbar-static-top">
   <div class="container-fluid">
     <ul class="nav navbar-nav">
       <li class="brand">Lucky Charms</li>
       <li><a href="/">Home</a></li>
-      <li><%= link_to "Cart", cart_items_path %> <%="(#{cart_count})"%></li>
+       <li> <%= link_to "Cart", cart_path %> <%="(#{cart_count})"%></li>
       <li>
         <% if current_user %>
           <%= link_to "Logout", logout_path, method: :delete %>

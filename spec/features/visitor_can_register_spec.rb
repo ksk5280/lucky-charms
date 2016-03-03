@@ -33,7 +33,7 @@ RSpec.feature "logged in user sees items in cart put there before logging in" do
       first(:button, "Add to Cart").click
     end
 
-    visit "/cart_items"
+    visit "/cart"
     expect(page).to have_content(category.items.first.title)
 
     click_on "Login"
@@ -42,7 +42,7 @@ RSpec.feature "logged in user sees items in cart put there before logging in" do
     fill_in "Password", with: "password"
     click_on "Login to your account"
 
-    visit "/cart_items"
+    visit "/cart"
 
     expect(page).to have_content(category.items.first.title)
     expect(page).to_not have_content(category.items[1].title)

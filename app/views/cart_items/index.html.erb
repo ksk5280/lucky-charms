@@ -1,13 +1,18 @@
-<h1>Your Cart</h1>
-<div class="cart-container">
-
+<div class="cart-container well">
+  <h1>Your Cart</h1>
   <div class="cart-items">
     <% @cart_contents.each do |item, quantity| %>
-    <img src="<%= item.image %>" alt="#{item.title} image">
+    <img src="<%= item.image %>" alt="<%= item.title %>">
       <p><%= item.title %></p>
       <p><%= item.description %></p>
       <p><%= item.formatted_price %></p>
       <p>Qty. <%= quantity %></p>
+      <%= button_to "Increase quantity", cart_items_path(:item_id => item.id) %>
+      <%= button_to "Decrease quantity", cart_items_path(:item_id => item.id, subtract: true) %>
+      <p>Subtotal:
+        <%= "#{format('$%.2f', (item.price * quantity / 100.0))}" %>
+      </p>
+      <%= button_to "Remove", cart_item_path(item.id), class: "btn btn-danger item-btn mousiness btn-font-size", method: "delete" %>
     <% end %>
   </div>
 
