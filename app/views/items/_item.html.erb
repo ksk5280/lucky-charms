@@ -3,7 +3,7 @@
     <img src="<%= item.image %>" alt="<%= item.title %>">
     <div class="item-description text-center">
     <div class="mousiness btn-font-size green-font">
-      <h3><%= item.title %></h3>
+      <h4><%= item.title %></h3>
     </div>
     <div class="btn-pricing"><%= item.formatted_price %></div>
     <%= button_to "Add to Cart", cart_items_path(item_id: item.id),
