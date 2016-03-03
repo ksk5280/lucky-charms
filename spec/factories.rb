@@ -1,4 +1,8 @@
 FactoryGirl.define do
+  factory :user do
+    username "janedoe"
+    password "password"
+  end
   factory :category do
     title
 
@@ -11,7 +15,7 @@ FactoryGirl.define do
     "#{name}"
   end
 
-  sequence :item_name do |number|
+  sequence :item_name, %w(1 2 3 4 5 6).cycle do |number|
     "Lucky Item #{number}"
   end
 
