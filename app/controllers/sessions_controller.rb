@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
       session[:user_id] = @user.id
       redirect_to dashboard_path(id: @user.id)
     else
-      flash.now[:error] = "Invalid. Try Again."
+      flash.now[:danger] = "Invalid. Try Again."
       render :new
     end
   end

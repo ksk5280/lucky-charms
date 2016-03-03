@@ -3,6 +3,17 @@
     <div class="padded-bottom">
       <h1 class="green-font mousiness" ><%= "#{@item.title}" %></h1>
     </div>
-    <%= button_to "Add to Cart", cart_items_path(item_id: @item.id), class: "btn item-btn mousiness btn-font-size" %>
+    <div class="col-md-4 cart-item-image">
+      <img src="<%= @item.image %>" alt="<%= @item.title %>">
+    </div>
+    <div class="col-md-8 cart-item-description">
+      <h3 class="mousiness"><%= @item.title %></h3>
+      <h4 class="mousiness"><%= @item.description %></h4>
+      <p class="btn-pricing"><%= @item.formatted_price %></p>
+    </div>
+    <br>
+    <div class="col-md-12">
+      <%= button_to "Add to Cart", cart_items_path(item_id: @item.id), class: "btn item-btn mousiness btn-font-size" %>
+    </div>
   </div>
 </div>
