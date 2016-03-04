@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   get "/", to: "users#index", as: "root"
   resources :users, only: [:create, :new]
-  resources :orders, only: [:index]
+  resources :orders, only: [:index, :create, :show]
   get "/dashboard", to: "users#show", as: "dashboard"
 
   get "/login", to: "sessions#new"

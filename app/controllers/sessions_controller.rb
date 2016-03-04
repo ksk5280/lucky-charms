@@ -5,6 +5,7 @@ class SessionsController < ApplicationController
   def create
     @user = User.find_by(username: params[:session][:username])
     if @user && @user.authenticate(params[:session][:password])
+      flash[:success] = "Logged in as #{@user.username}"
       session[:user_id] = @user.id
       redirect_to dashboard_path(id: @user.id)
     else
