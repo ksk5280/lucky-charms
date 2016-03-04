@@ -1,0 +1,14 @@
+<div class="cart-container well">
+  <div class="text-center row">
+    <div class="padded-bottom">
+      <h1 class="green-font mousiness">Your Orders</h1>
+    </div>
+    <div class="orders">
+      <% @orders.each do |order| %>
+        <p>Order #<%= order.id %></p>
+        <p>Status: <%= order.status %></p>
+        <p>Placed on: <%= order.created_at.strftime("%B %-d, %Y") %></p>
+      <% end %>
+    </div>
+  </div>
+</div>
