@@ -19,17 +19,17 @@ RSpec.feature "User can view past orders" do
     visit "/orders"
 
     within ".orders" do
-      expect(page).to have_content "Order ##{order1.id}"
-      expect(page).to have_content "Status: ordered"
-      expect(page).to have_content "Placed on: March 1, 2016"
+      expect(page).to have_content "##{order1.id}"
+      expect(page).to have_content "ordered"
+      expect(page).to have_content "March 1, 2016"
 
-      expect(page).to have_content "Order ##{order2.id}"
-      expect(page).to have_content "Status: shipped"
-      expect(page).to have_content "Placed on: March 2, 2016"
+      expect(page).to have_content "##{order2.id}"
+      expect(page).to have_content "shipped"
+      expect(page).to have_content "March 2, 2016"
 
-      expect(page).to have_content "Order ##{order3.id}"
-      expect(page).to have_content "Status: pending"
-      expect(page).to have_content "Placed on: March 3, 2016"
+      expect(page).to have_content "##{order3.id}"
+      expect(page).to have_content "pending"
+      expect(page).to have_content "March 3, 2016"
     end
   end
 

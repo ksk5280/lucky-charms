@@ -1,4 +1,9 @@
 FactoryGirl.define do
+  factory :line_item do
+    order nil
+    item nil
+    quantity 1
+  end
   factory :order do
     status "MyString"
     user nil
