@@ -8,10 +8,10 @@ RSpec.feature "User can view past orders" do
     order3 = user.orders.create(status: "pending", created_at: Time.new(2016, 3, 3))
 
     visit root_path
-    click_on "Login"
+    first(:link, "Login").click
     fill_in "Username", with: user.username
     fill_in "Password", with: "password"
-    click_on "Login"
+    click_on "Login to your account"
 
     visit "/orders"
 
