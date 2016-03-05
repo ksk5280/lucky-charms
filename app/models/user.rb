@@ -4,5 +4,5 @@ class User < ActiveRecord::Base
   validates :username, presence: true, uniqueness: true
   validates :password, presence: true
 
-  enum role: ["user", "admin"]
+  enum role: %w(user admin)
 end

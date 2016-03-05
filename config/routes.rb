@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   get "/dashboard", to: "users#show", as: "dashboard"
 
   namespace :admin do
-    resources :dashboard, only: [:index]
+    resources :dashboard, only: [:index], as: "user"
   end
 
   get "/login", to: "sessions#new"

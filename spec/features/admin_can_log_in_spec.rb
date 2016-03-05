@@ -1,8 +1,8 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.feature "Admin can log in" do
   scenario "admin sees dashboard after logging in" do
-    user = User.create(username: "admin", password: "password", role: 1)
+    User.create(username: "admin", password: "password", role: 1)
 
     visit "/login"
     fill_in "Username", with: "admin"
