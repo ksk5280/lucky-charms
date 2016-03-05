@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
       flash[:success] = "Logged in as #{@user.username}"
       session[:user_id] = @user.id
       if @user.admin?
-        redirect_to admin_user_index_path
+        redirect_to admin_dashboard_index_path
       else
         redirect_to dashboard_path(id: @user.id)
       end
