@@ -3,4 +3,6 @@ class User < ActiveRecord::Base
   has_many :orders
   validates :username, presence: true, uniqueness: true
   validates :password, presence: true
+
+  enum role: %w(user admin)
 end
