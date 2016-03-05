@@ -12,6 +12,11 @@
   <div class="text-right row">
     <div class="padded-top">
       <h2 class="green-font mousiness padded-right">Total: <%= @cart.total %></h2>
+      <% if current_user %>
+        <%= button_to "Checkout", orders_path %>
+      <% else %>
+        <%= link_to "Checkout", login_path %>
+      <% end %>
     </div>
   </div>
 </div>
