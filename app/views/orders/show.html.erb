@@ -3,7 +3,8 @@
   <h1>Order #<%= @order.id %></h1>
   <h3>Status: <%= @order.status %></h3>
   <h3>Total: <%= @order.formatted_total %></h3>
-  <h3>Date Submitted: <%= @order.formatted_date %></h3>
+  <h3>Date Submitted: <%= @order.formatted_creation_date %></h3>
+  <h3>Date Updated: <%= @order.formatted_update_date %></h3>
 </div>
 <div class="items">
   <% @order.line_items.each do |line_item| %>

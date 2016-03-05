@@ -5,11 +5,19 @@ class Order < ActiveRecord::Base
   has_many :line_items
   has_many :items, through: :line_items
 
-  validates :status, presence: true
-  #status of the order (ordered, paid, cancelled, completed)
+  validates :status,
+              presence: true,
+              inclusion: {
+                in: %w(ordered paid cancelled completed),
+                message: "%{value} is not a valid status"
+              }
 
-  def formatted_date
+  def formatted_creation_date
     created_at.strftime("%B %-d, %Y")
+  end
+
+  def formatted_update_date
+    updated_at.strftime("%B %-d, %Y")
   end
 
   def total
