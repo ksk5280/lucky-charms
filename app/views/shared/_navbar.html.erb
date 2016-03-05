@@ -4,17 +4,19 @@
       <a class="navbar-brand big-big-font" href="<%= items_path %>">Lucky Charms</a>
     </div>
     <ul class="nav navbar-nav navbar-right">
-      <li class="mousiness">
         <% if current_user %>
-          <%= link_to "Logout", logout_path, method: :delete, class: "cart-link" %>
+        <li class="mousiness"><a href="<%= logout_path %>" data-method="delete" class="cart-link">
+        <span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
         <% else %>
-          <%= link_to "Login", login_path, class: "cart-link" %>
+          <li class="mousiness"><a href="<%= login_path %>" class="cart-link">
+          <span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+          <li class="mousiness"><a href="<%= login_path %>" class="cart-link">
+          <span class="glyphicon glyphicon-user"></span>Create Account</a></li>
         <% end %>
-      </li>
       <li class="mousiness">
-      <a href="<%= cart_path %>" class="cart-link">
-      <span class="glyphicon glyphicon-shopping-cart"></span> Cart
-      <%="(#{cart_count})"%></a>
+        <a href="<%= cart_path %>" class="cart-link">
+        <span class="glyphicon glyphicon-shopping-cart"></span> Cart
+        <%="(#{cart_count})"%></a>
       </li>
     </ul>
   </div>
