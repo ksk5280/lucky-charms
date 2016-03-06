@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get "/cart", to: "cart_items#index"
 
   get "/", to: "users#index", as: "root"
-  resources :users, only: [:create, :new]
+  resources :users, only: [:create, :new, :show]
   resources :orders, only: [:index, :create, :show]
   get "/dashboard", to: "users#show", as: "dashboard"
 
