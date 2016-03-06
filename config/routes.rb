@@ -6,12 +6,13 @@ Rails.application.routes.draw do
 
   get "/", to: "users#index", as: "root"
   resources :users, only: [:create, :new, :show]
-  resources :orders, only: [:index, :create, :show]
+  resources :orders, only: [:index, :create, :show, :update]
   get "/dashboard", to: "users#show", as: "dashboard"
 
   namespace :admin do
     resources :dashboard, only: [:index]
     resources :orders, only: [:show]
+    get "/:status", to: "orders#index", as: "status"
   end
 
   get "/login", to: "sessions#new"

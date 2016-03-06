@@ -33,4 +33,12 @@ class Order < ActiveRecord::Base
   def formatted_total
     number_to_currency(total)
   end
+
+  def self.status_total(status)
+    where(status: status).count
+  end
+
+  def self.statuses
+    %w(ordered paid cancelled completed)
+  end
 end

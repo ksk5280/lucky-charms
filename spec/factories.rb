@@ -12,6 +12,9 @@ FactoryGirl.define do
   factory :user do
     username "janedoe"
     password "password"
+    first_name "Jane"
+    last_name "Doe"
+    address "1510 Blake St., Denver, CO, 80202"
   end
   factory :category do
     title
