@@ -11,7 +11,7 @@
       </tr>
       <% @orders.each do |order| %>
         <tr>
-          <td>#<%= order.id %></td>
+          <td><%= link_to "##{order.id}", order_path(order.id) %></td>
           <td><%= order.status %></td>
           <td><%= order.created_at.strftime("%B %-d, %Y") %></td>
         <tr>
