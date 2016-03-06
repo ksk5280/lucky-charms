@@ -53,9 +53,16 @@ RSpec.feature "User can view a single order" do
     end
   end
 
-    # expect(page).to have_content
-#       And if any of the items in the order were retired from the menu
+  context "items have been retired from store" do
+    scenario "they do not see Add to Cart button on item show page" do
+      @item1.update(retired: true)
+      visit "/orders"
+      click_link "##{@order.id}"
+      click_link @item1.title
 
-#       Then they should still be able to access the item page
-#       But they should not be able to add the item to their cart
+      expect(current_path).to eq(item_path(@item1.id))
+      expect(page).to_not have_button "Add to Cart"
+      expect(page).to have_content "Item has been retired"
+    end
+  end
 end
