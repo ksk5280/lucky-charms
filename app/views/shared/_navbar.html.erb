@@ -5,6 +5,7 @@
     </div>
     <ul class="nav navbar-nav navbar-right">
         <% if current_user %>
+        <li><a href="<%= edit_user_path(current_user) %>" class="cart-link glyphicon mousiness">Update Account</a></li>
         <li class="mousiness"><a href="<%= logout_path %>" data-method="delete" class="cart-link">
         <span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
         <% else %>

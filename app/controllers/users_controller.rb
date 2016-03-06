@@ -22,6 +22,21 @@ class UsersController < ApplicationController
     @user = current_user
   end
 
+  def edit
+    if !current_user || current_user.id != params[:id].to_i
+      render file: "public/404"
+    end
+    @user = current_user
+  end
+
+  def update
+    current_user.update(user_params)
+    if current_user.save
+      flash[:success] = "Account successfully updated."
+      redirect_to dashboard_path
+    end
+  end
+
   private
 
   def user_params
