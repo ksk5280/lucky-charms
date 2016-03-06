@@ -4,8 +4,8 @@ module ApplicationHelper
       "Item has been retired"
     else
       button_to "Add to Cart",
-      cart_items_path(item_id: item.id),
-      class: "btn item-btn mousiness btn-font-size"
+        cart_items_path(item_id: item.id),
+        class: "btn item-btn mousiness btn-font-size"
     end
   end
 end

@@ -5,6 +5,6 @@ RSpec.describe Order, type: :model do
   it { should belong_to :user }
   it { should have_many :line_items }
   it { should have_many(:items).through(:line_items) }
-  it { should validate_inclusion_of(:status).
-         in_array(%w(ordered paid cancelled completed)) }
+  statuses = %w(ordered paid cancelled completed)
+  it { should validate_inclusion_of(:status).in_array(statuses) }
 end
