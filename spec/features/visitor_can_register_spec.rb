@@ -6,13 +6,12 @@ RSpec.feature "visitor can log in" do
 
     expect(page).to have_content("Login")
 
-    click_on "Create Account"
+    first(:link, "Create Account").click
 
     fill_in "Username", with: "brennan"
     fill_in "Password", with: "password"
 
-    click_on "Create Account"
-
+    click_button "Create Account"
     expect(current_path).to eq "/dashboard"
     expect(page).to have_content("Logged in as brennan")
     expect(page).to have_content("Your Orders")
@@ -49,6 +48,7 @@ RSpec.feature "logged in user sees items in cart put there before logging in" do
     expect(page).to_not have_content(category.items.last.title)
   end
 end
+
 RSpec.feature "clicking logout ends session and changes login/out link" do
   scenario "user turns visitor and sees logout link change" do
     User.create(username: "brennan", password: "password")

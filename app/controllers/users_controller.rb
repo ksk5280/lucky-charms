@@ -9,6 +9,7 @@ class UsersController < ApplicationController
       flash[:success] = "Logged in as #{@user.username}"
       redirect_to dashboard_path(id: @user.id)
     else
+      flash[:danger] = "Invalid account details. Please try again."
       render :new
     end
   end

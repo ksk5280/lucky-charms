@@ -14,4 +14,11 @@
       <h2 class="green-font mousiness padded-right">Total: <%= @cart.total %></h2>
     </div>
   </div>
+  <div class="text-center row">
+    <% if current_user %>
+      <%= button_to "Checkout", orders_path, class: "btn btn-success btn-font-size mousiness "%>
+    <% else %>
+      <%= link_to "Checkout", login_path, class: "btn btn-success btn-font-size mousiness" %>
+    <% end %>
+  </div>
 </div>
