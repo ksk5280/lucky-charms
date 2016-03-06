@@ -20,6 +20,10 @@ class Order < ActiveRecord::Base
     updated_at.strftime("%B %-d, %Y")
   end
 
+  def formatted_time
+    created_at.localtime.strftime("%-l:%M %p")
+  end
+
   def total
     line_items.inject(0) do |total, line_item|
       total + line_item.subtotal
