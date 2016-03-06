@@ -5,7 +5,8 @@ Rails.application.routes.draw do
   root to: "homes#show"
   get "/cart", to: "cart_items#index"
 
-  resources :users, only: [:create, :new]
+  resources :users, only: [:create, :new, :show]
+
   resources :orders, only: [:index, :create, :show]
   get "/dashboard", to: "users#show", as: "dashboard"
 
