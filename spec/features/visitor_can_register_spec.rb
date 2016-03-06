@@ -8,10 +8,15 @@ RSpec.feature "visitor can create account" do
 
       fill_in "Username", with: "brennan"
       fill_in "Password", with: "password"
+      fill_in "First name", with: "Brennan"
+      fill_in "Last name", with: "Holtzclaw"
+      fill_in "Address", with: "1510 Blake Street, Basement"
 
       click_button "Create Account"
       expect(current_path).to eq "/dashboard"
       expect(page).to have_content("Logged in as brennan")
+      expect(page).to have_content("Name: Brennan Holtzclaw")
+      expect(page).to have_content("Address: 1510 Blake Street, Basement")
       expect(page).to have_content("Your Orders")
       expect(page).to have_content("Logout")
       expect(page).to_not have_content("Login")
