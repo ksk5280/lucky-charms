@@ -20,11 +20,18 @@ class UsersController < ApplicationController
 
   def show
     @user = current_user
+    user_is_current_user
   end
 
   private
 
   def user_params
     params.require(:user).permit(:username, :password)
+  end
+
+  def user_is_current_user
+    if current_user.nil? || current_user.id != params[:id].to_i
+      render file: "public/404"
+    end
   end
 end
