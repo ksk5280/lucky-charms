@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.feature "Admin can only modify own info spec" do
-  context "Logged in admin" do
+  context "Logged in admin edits own info" do
     scenario "sees updated information" do
       admin = create(:user, role: 1)
       visit "/login"
@@ -28,10 +28,12 @@ RSpec.feature "Admin can only modify own info spec" do
       fill_in "Username", with: "newusername"
       fill_in "Password", with: "newpassword"
       click_button "Login"
-      
+
       expect(page).to have_content "Logged in as newusername"
     end
+  end
 
+  context "Logged in admin tries to edit other user's info" do
     scenario "sees a 404 page" do
       admin = create(:user, role: 1)
       user2 = User.create(username: "johndoe", password: "password")

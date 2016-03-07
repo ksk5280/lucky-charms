@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.feature "User can only modify own info spec" do
-  context "Logged in user" do
+  context "Logged in user edits own info" do
     scenario "sees updated information" do
       user1 = create(:user)
       visit "/login"
@@ -33,7 +33,9 @@ RSpec.feature "User can only modify own info spec" do
       expect(page).to have_content "Name: Janice Doer"
       expect(page).to have_content "Address: Union Station, Denver, CO 80202"
     end
+  end
 
+  context "Logged in user tries to edit other user's info" do
     scenario "sees a 404 page" do
       user1 = create(:user)
       user2 = User.create(username: "johndoe", password: "password")
@@ -48,7 +50,7 @@ RSpec.feature "User can only modify own info spec" do
     end
   end
 
-  context "User not logged in" do
+  context "Not logged in visitor tries to edit an existing user's info" do
     scenario "sees a 404 page" do
       user1 = create(:user)
 
