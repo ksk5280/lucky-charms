@@ -1,0 +1,10 @@
+<div class="col-md-4">
+  <div class="item-display">
+    <%= link_to image_tag(category.image), category_path(category.title)%>
+    <div class="item-description text-center">
+      <div class="mousiness btn-font-size green-font">
+        <h4><%= link_to "#{category.title}", category_path(category.title), class: "green-font" %></h4>
+      </div>
+    </div>
+  </div>
+</div>

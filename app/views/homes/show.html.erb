@@ -45,29 +45,8 @@
     <div class="padded-bottom">
       <h1 class="green-font mousiness" >Featured Collections</h1>
     </div>
-    <div class="items mousiness green-font">
-      <div class="col-md-4">
-        <div class="item-display">
-          <h2>Category 1</h2>
-          <img src="/images/Penny.png" alt="Category 1">
-        </div>
-      </div>
-    </div>
-    <div class="items mousiness green-font">
-      <div class="col-md-4">
-        <div class="item-display">
-          <h2>Category 2</h2>
-          <img src="/images/Penny.png" alt="Category 1">
-        </div>
-      </div>
-    </div>
-    <div class="items mousiness green-font">
-      <div class="col-md-4">
-        <div class="item-display">
-          <h2>Category 3</h2>
-          <img src="/images/Penny.png" alt="Category 1">
-        </div>
-      </div>
+    <div class="categories">
+      <%= render partial: "categories/category", collection: @categories %>
     </div>
   </div>
 </div>
