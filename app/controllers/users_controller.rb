@@ -19,8 +19,24 @@ class UsersController < ApplicationController
   end
 
   def show
+    user_is_current_user?
     @user = current_user
-    user_is_current_user
+  end
+
+  def edit
+    user_is_current_user?
+    @user = current_user
+  end
+
+  def update
+    current_user.update(user_params)
+    if current_user.save
+      flash[:success] = "Account successfully updated."
+      redirect_to dashboard_path(id: current_user.id)
+    else
+      @user = current_user
+      render :edit
+    end
   end
 
   private
@@ -33,8 +49,8 @@ class UsersController < ApplicationController
                                  :address)
   end
 
-  def user_is_current_user
-    if current_user.nil? || current_user.id != params[:id].to_i
+  def user_is_current_user?
+    if !current_user || current_user.id != params[:id].to_i
       render file: "public/404"
     end
   end
