@@ -14,7 +14,9 @@ RSpec.feature "visitor logs in" do
       expect(page).to have_content("Logged in as #{user.username}")
       expect(page).to have_content("Your Orders")
       expect(page).to have_content("Logout")
+      expect(page).to have_content("My Account")
       expect(page).to_not have_content("Login")
+      expect(page).to_not have_content("Create Account")
     end
   end
 
