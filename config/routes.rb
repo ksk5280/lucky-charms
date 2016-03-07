@@ -20,6 +20,8 @@ Rails.application.routes.draw do
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
 
+  resource :weather, only: [:index]
+
   resources :categories, only: [:index]
   get "/:category", to: "categories#show", as: "category"
 end
