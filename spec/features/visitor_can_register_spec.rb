@@ -17,7 +17,7 @@ RSpec.feature "visitor can create account" do
       expect(page).to have_content("Logged in as brennan")
       expect(page).to have_content("Name: Brennan Holtzclaw")
       expect(page).to have_content("Address: 1510 Blake Street, Basement")
-      expect(page).to have_content("Your Orders")
+      expect(page).to have_content("All Orders")
       expect(page).to have_content("Logout")
       expect(page).to_not have_content("Login")
     end

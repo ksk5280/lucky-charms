@@ -12,7 +12,7 @@ RSpec.feature "visitor logs in" do
 
       expect(current_path).to eq "/dashboard"
       expect(page).to have_content("Logged in as #{user.username}")
-      expect(page).to have_content("Your Orders")
+      expect(page).to have_content("All Orders")
       expect(page).to have_content("Logout")
       expect(page).to have_content("My Account")
       expect(page).to_not have_content("Login")

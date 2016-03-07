@@ -9,7 +9,6 @@ RSpec.feature "Admin can only modify own info spec" do
       fill_in "Password", with: "password"
       click_button "Login"
 
-      click_link "My Account"
       click_link "Update Account"
       fill_in "Username", with: "newusername"
       fill_in "Password", with: "newpassword"
