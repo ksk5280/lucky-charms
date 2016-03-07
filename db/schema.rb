@@ -67,6 +67,9 @@ ActiveRecord::Schema.define(version: 20160306224058) do
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.integer  "role"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "address"
   end
 
   add_foreign_key "category_items", "categories"

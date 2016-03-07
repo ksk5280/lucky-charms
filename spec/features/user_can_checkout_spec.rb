@@ -22,13 +22,13 @@ RSpec.feature "User can checkout" do
     expect(page).to have_content(item.title)
     click_on "Checkout"
 
-    expect(current_path).to eq("/orders/1")
+    expect(current_path).to eq("/orders/#{Order.last.id}")
     expect(page).to have_content("Order was successfully placed!")
     expect(page).to have_content("Cart (0)")
 
     click_link "My Orders"
     within "table" do
-      expect(page).to have_content "#1"
+      expect(page).to have_content "##{Order.last.id}"
     end
   end
 end
