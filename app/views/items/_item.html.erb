@@ -5,7 +5,7 @@
       <div class="mousiness btn-font-size ggreen-font">
         <h4><%= link_to "#{item.title}", item_path(item.id), class: "green-font" %></h4>
       </div>
-      <div class="btn-pricing"><%= item.formatted_price %></div>
+      <div class="btn-pricing"><%= format_price(item.price) %></div>
       <%= button_to "Add to Cart", cart_items_path(item_id: item.id),
           class: "btn item-btn mousiness btn-font-size" %>
     </div>

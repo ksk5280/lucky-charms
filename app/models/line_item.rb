@@ -5,10 +5,6 @@ class LineItem < ActiveRecord::Base
   belongs_to :item
 
   def subtotal
-    (quantity * item.price).to_f / 100
-  end
-
-  def formatted_subtotal
-    number_to_currency(subtotal)
+    quantity * item.price
   end
 end

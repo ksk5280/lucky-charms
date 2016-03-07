@@ -30,10 +30,6 @@ class Order < ActiveRecord::Base
     end
   end
 
-  def formatted_total
-    number_to_currency(total)
-  end
-
   def self.status_total(status)
     where(status: status).count
   end
