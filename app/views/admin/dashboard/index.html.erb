@@ -4,4 +4,40 @@
       <h1 class="green-font mousiness" >Admin Dashboard</h1>
     </div>
   </div>
+  <div class="text-center row">
+    <div class="padded-bottom">
+      <h2 class="green-font mousiness" >Order Statuses</h1>
+    </div>
+  </div>
+  <div class="orders row">
+    <ul>
+      <% Order.statuses.each do |status| %>
+      <li><%= link_to status.capitalize, admin_status_path(status: status)%>: <%= @orders.status_total(status) %></li>
+      <% end %>
+    </ul>
+    <table class="table table-condensed table-hover row">
+      <tr>
+        <th>Order #</th>
+        <th>Status</th>
+        <th>Placed on</th>
+        <th>Update Order</th>
+      </tr>
+      <% @orders.each do |order| %>
+        <tr>
+          <td><%= link_to "##{order.id}", order_path(order.id) %></td>
+          <td><%= order.status %></td>
+          <td><%= order.created_at.strftime("%B %-d, %Y") %></td>
+          <% if order.status == "paid" %>
+            <td><%= button_to "Cancel order", order_path(order, status: "cancelled"), method: :patch %>
+            <%= button_to "Mark as completed", order_path(order, status: "completed"), method: :patch %></td>
+          <% elsif order.status == "ordered" %>
+            <td><%= button_to "Cancel order", order_path(order, status: "cancelled"), method: :patch %>
+            <%= button_to "Mark as paid", order_path(order, status: "paid"), method: :patch %></td>
+          <% else %>
+            <td></td>
+          <% end %>
+        </tr>
+      <% end %>
+    </table>
+  </div>
 </div>
