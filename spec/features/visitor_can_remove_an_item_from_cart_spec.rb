@@ -6,7 +6,7 @@ RSpec.feature "visitor removes an item from their cart" do
     item = cat1.items.create(title: "Lucky Penny",
                              description: "Shiny",
                              price: 1000,
-                             image: "/images/Penny.png",)
+                             image: "Penny.png",)
     visit "/items"
     click_on "Add to Cart"
 
@@ -26,7 +26,7 @@ RSpec.feature "visitor removes an item from their cart" do
       expect(page).not_to have_content("Lucky Penny")
       expect(page).not_to have_content("Shiny")
       expect(page).not_to have_content("$10.00")
-      expect(page).not_to have_css("img[src=\"/images/Penny.png\"]")
+      expect(page).not_to have_css("img[src=\"Penny.png\"]")
     end
   end
 
@@ -35,7 +35,7 @@ RSpec.feature "visitor removes an item from their cart" do
     cat1.items.create(title: "Lucky Penny",
                       description: "Shiny",
                       price: 1000,
-                      image: "/images/Penny.png",)
+                      image: "Penny.png",)
     visit "/items"
     click_on "Add to Cart"
     visit "/cart"

@@ -40,6 +40,6 @@ FactoryGirl.define do
     title { generate(:item_name) }
     description
     price 1
-    image "/images/horseshoe.png"
+    image "horseshoe.png"
   end
 end

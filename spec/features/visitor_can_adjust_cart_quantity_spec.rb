@@ -6,7 +6,7 @@ RSpec.feature "Visitor can adjust cart quantity" do
     cat1.items.create(title: "Lucky Penny",
                       description: "Shiny",
                       price: 1000,
-                      image: "/images/Penny.png",)
+                      image: "Penny.png",)
 
     visit "/items"
     click_on "Add to Cart"

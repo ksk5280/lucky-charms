@@ -16,7 +16,7 @@ RSpec.describe Item, type: :model do
     item1 = Item.create(title: "Lucky Penny",
                         description: "Shiny",
                         price: 1000,
-                        image: "/images/Penny.png")
+                        image: "Penny.png")
 
     expect(item1.formatted_price).to eq "$10.00"
   end
