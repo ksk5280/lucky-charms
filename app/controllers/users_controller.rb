@@ -19,13 +19,12 @@ class UsersController < ApplicationController
   end
 
   def show
+    user_is_current_user?
     @user = current_user
   end
 
   def edit
-    if !current_user || current_user.id != params[:id].to_i
-      render file: "public/404"
-    end
+    user_is_current_user?
     @user = current_user
   end
 
@@ -33,13 +32,26 @@ class UsersController < ApplicationController
     current_user.update(user_params)
     if current_user.save
       flash[:success] = "Account successfully updated."
-      redirect_to dashboard_path
+      redirect_to dashboard_path(id: current_user.id)
+    else
+      @user = current_user
+      render :edit
     end
   end
 
   private
 
   def user_params
-    params.require(:user).permit(:username, :password)
+    params.require(:user).permit(:username,
+                                 :password,
+                                 :first_name,
+                                 :last_name,
+                                 :address)
+  end
+
+  def user_is_current_user?
+    if !current_user || current_user.id != params[:id].to_i
+      render file: "public/404"
+    end
   end
 end

@@ -1,6 +1,16 @@
 <div class="well">
   <div class="text-center row">
     <div class="padded-bottom">
+      <h1 class="green-font mousiness" >Account Information</h1>
+      <h3>Name: <%= @user.first_name %> <%= @user.last_name %></h3>
+      <h3>Address: <%= @user.address %></h3>
+      <%= link_to "Update Account", edit_user_path(@user.id) %>
+    </div>
+  </div>
+</div>
+<div class="well">
+  <div class="text-center row">
+    <div class="padded-bottom">
       <h1 class="green-font mousiness" >Your Orders</h1>
     </div>
   </div>
