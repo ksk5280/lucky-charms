@@ -4,7 +4,12 @@
       <a class="navbar-brand big-big-font" href="<%= root_path %>">Lucky Charms</a>
     </div>
     <ul class="nav navbar-nav navbar-right">
-        <% if current_user %>
+        <% if current_user && current_user.admin? %>
+          <li class="mousiness"><a href="<%= logout_path %>" data-method="delete" class="cart-link">
+          <span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+          <li class="mousiness"><a href="<%= admin_dashboard_index_path %>" class="cart-link">
+          <span class="glyphicon glyphicon-user"></span>Admin Dashboard</a></li>
+        <% elsif current_user %>
           <li class="mousiness"><a href="<%= logout_path %>" data-method="delete" class="cart-link">
           <span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
           <li class="mousiness"><a href="<%= user_path(current_user) %>" class="cart-link">
