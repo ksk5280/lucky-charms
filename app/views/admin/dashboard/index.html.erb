@@ -11,10 +11,9 @@
   </div>
   <div class="orders row">
     <ul>
-      <li><%= link_to "Ordered", admin_status_path(status: "ordered")%>: <%= @orders.status_total("ordered") %></li>
-      <li><%= link_to "Cancelled", admin_status_path(status: "cancelled")%>: <%= @orders.status_total("cancelled") %></li>
-      <li><%= link_to "Paid", admin_status_path(status: "paid")%>: <%= @orders.status_total("paid") %></li>
-      <li><%= link_to "Completed", admin_status_path(status: "completed")%>: <%= @orders.status_total("completed") %></li>
+      <% Order.statuses.each do |status| %>
+      <li><%= link_to status.capitalize, admin_status_path(status: status)%>: <%= @orders.status_total(status) %></li>
+      <% end %>
     </ul>
     <table class="table table-condensed table-hover row">
       <tr>

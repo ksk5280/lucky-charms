@@ -106,7 +106,7 @@ RSpec.feature "admin can view all orders" do
   end
 
   context "admin tries to change status of a single order" do
-    scenario "admin can change status to cancel for orders that are ordered" do
+    scenario "sees invalid status notification and admin dashboard" do
       @order2.update(status: "completed")
       visit admin_dashboard_index_path
 
