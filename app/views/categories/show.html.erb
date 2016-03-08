@@ -5,7 +5,7 @@
       <h4 class="green-font mousiness" >These glorious items will increase your luck.</h4>
     </div>
     <div class="items">
-      <%= render partial: "items/item", collection: @category.items %>
+      <%= render partial: "items/item", collection: @category.non_retired_items %>
     </div>
   </div>
 </div>
