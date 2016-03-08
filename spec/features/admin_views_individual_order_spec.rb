@@ -22,10 +22,9 @@ RSpec.feature "admin views individual order details" do
     click_on "Login to your account"
 
     visit admin_order_path(order1.id)
-
     expect(page).to have_content("Order ##{order1.id}")
     expect(page).to have_content("Submitted on: March 2, 2016 at 2:02 AM")
-    expect(page).to have_content("Full Name: Brennan Holtzclaw")
+    expect(page).to have_content("Name: Brennan Holtzclaw")
     expect(page).to have_content("Address: #{user.address}")
     expect(page).to have_content("Status: paid")
     expect(page).to have_content("Total: $5.05")

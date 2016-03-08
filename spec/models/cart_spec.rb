@@ -47,6 +47,6 @@ RSpec.describe "Cart", type: :model do
 
   it "can calculate the total price of all cart items" do
     cart = Cart.new(@item.id.to_s => 4)
-    expect(cart.total).to eq "$0.04"
+    expect(cart.total).to eq 4
   end
 end

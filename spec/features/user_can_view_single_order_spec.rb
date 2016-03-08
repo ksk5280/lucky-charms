@@ -39,7 +39,7 @@ RSpec.feature "User can view a single order" do
 
     expect(page).to have_content "ordered"
     expect(page).to have_content "Total: $0.05"
-    expect(page).to have_content "Date Submitted: March 1, 2016"
+    expect(page).to have_content "Submitted on: March 1, 2016"
   end
 
   context "the order was completed" do

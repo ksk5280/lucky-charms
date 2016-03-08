@@ -2,5 +2,8 @@
   <div class="padded-bottom">
     <h1 class="green-font mousiness" >Account Information</h1>
   </div>
-  <%= render partial: "users_info", locals: {orders_text: "All Orders"} %>
+</div>
+<div class="text-center row">
+  <%= render partial: "user_info", locals: {user: current_user} %>
+  <%= render partial: "user_info_links", locals: {orders_text: "All Orders"} %>
 </div>

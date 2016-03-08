@@ -8,6 +8,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
   helper_method :current_admin?
   helper_method :format_price
+  helper_method :user_orders_path
 
   def current_user
     @user ||= User.find(session[:user_id]) if session[:user_id]
@@ -15,6 +16,14 @@ class ApplicationController < ActionController::Base
 
   def current_admin?
     current_user && current_user.admin?
+  end
+
+  def user_orders_path
+    if current_admin?
+      admin_orders_path
+    else
+      orders_path
+    end
   end
 
   def set_cart

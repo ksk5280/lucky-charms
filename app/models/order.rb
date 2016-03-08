@@ -20,8 +20,12 @@ class Order < ActiveRecord::Base
     updated_at.strftime("%B %-d, %Y")
   end
 
-  def formatted_time
+  def formatted_creation_time
     created_at.localtime.strftime("%-l:%M %p")
+  end
+
+  def formatted_update_time
+    updated_at.localtime.strftime("%-l:%M %p")
   end
 
   def total

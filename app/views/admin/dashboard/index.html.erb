@@ -1,14 +1,20 @@
 <div class="text-center row">
   <div class="padded-bottom">
-    <h1 class="green-font mousiness" >Admin Dashboard</h1>
+    <h1 class="green-font mousiness">Admin Dashboard</h1>
   </div>
 </div>
-<%= render partial: "users/users_info", locals: {orders_text: "Personal Orders"} %>
+
+<div class="text-center row">
+  <%= render partial: "users/user_info", locals: {user: current_user} %>
+  <%= render partial: "users/user_info_links", locals: {orders_text: "Personal Orders"} %>
+</div>
+
 <div class="text-center row">
   <div class="padded-bottom padded-top">
     <h2 class="green-font mousiness">All Orders</h1>
   </div>
 </div>
+
 <div class="orders row">
   <table class="table table-condensed table-hover orders-table">
     <%= render partial: "admin/orders/status_counts" %>

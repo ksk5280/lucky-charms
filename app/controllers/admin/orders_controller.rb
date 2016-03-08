@@ -5,14 +5,14 @@ class Admin::OrdersController < Admin::BaseController
 
   def index
     if Order.statuses.include?(params[:status])
-      @orders = Order.where(status: params[:status]).order(id: :asc)
+      @orders = Order.where(status: params[:status]).order(updated_at: :desc)
       @status = params[:status].capitalize
     elsif !params[:status]
-      @orders = Order.all.order(id: :asc)
+      @orders = Order.order(updated_at: :desc)
       @status = "All"
     else
       flash.now[:error] = "Status is invalid"
-      @orders = Order.all.order(id: :asc)
+      @orders = Order.order(updated_at: :desc)
       render "admin/dashboard/index"
     end
   end
