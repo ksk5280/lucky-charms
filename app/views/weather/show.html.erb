@@ -1,0 +1,13 @@
+<p class="text-center">
+  <h1>Your Forecast</h1>
+</p>
+<% @forecast.each do |day_part| %>
+  <div class="well col-md-3 mousiness green-font weather">
+    <p>
+  <h3><%= day_part.dt_txt.to_datetime.strftime("%A") %></h3><br>
+  <h4><%= day_part.dt_txt.to_datetime.strftime("%l %P") %></h4><br>
+  <h2 class="text-center"><%= day_part.main.temp.to_i %></h3><br>
+  <h5><%= day_part.weather.first.description %></h5><br>
+    </p>
+  </div>
+<% end %>
