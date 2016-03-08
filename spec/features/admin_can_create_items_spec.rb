@@ -31,7 +31,7 @@ RSpec.feature "Admin can create items" do
     end
   end
 
-  context "they try to create an item without a title" do
+  context "admin tries to create an item without a title" do
     scenario "sees message that title is missing" do
       click_on "Create New Item"
       fill_in "Title", with: ""
@@ -42,6 +42,15 @@ RSpec.feature "Admin can create items" do
       click_on "Create Item"
 
       expect(page).to have_content "Title can't be blank"
+    end
+  end
+
+  context "Non admin cannot create an item" do
+    scenario "they are redirected to the items page" do
+      click_on "Logout"
+      visit "/items/new"
+
+      expect(current_path).to eq(items_path)
     end
   end
 end

@@ -8,8 +8,12 @@ class ItemsController < ApplicationController
   end
 
   def new
-    @item = Item.new
-    @categories = Category.all
+    if current_admin?
+      @item = Item.new
+      @categories = Category.all
+    else
+      redirect_to items_path
+    end
   end
 
   def create
