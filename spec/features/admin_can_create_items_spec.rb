@@ -4,7 +4,8 @@ RSpec.feature "Admin can create items" do
   before(:each) do
     admin = create(:user, role: 1)
     @category1 = create(:category)
-    category2 = create(:category)
+    @fixture_image_path = Rails.root.join("spec", "support", "lucky_test.png")
+
     visit "/login"
     fill_in "Username", with: admin.username
     fill_in "Password", with: "password"
@@ -17,7 +18,7 @@ RSpec.feature "Admin can create items" do
     fill_in "Description", with: "New Description"
     fill_in "Price", with: "9.99"
     find(:css, "#category-check-#{@category1.id}").click
-    # upload image, optional
+    attach_file "Image", @fixture_image_path
     click_on "Create Item"
 
     new_item = Item.last
@@ -27,7 +28,8 @@ RSpec.feature "Admin can create items" do
       expect(page).to have_content new_item.title
       expect(page).to have_content new_item.description
       expect(page).to have_content new_item.formatted_price
-      # expect(page).to have_content new_item.category
+
+      expect(page).to have_css("img")
     end
   end
 
@@ -38,7 +40,7 @@ RSpec.feature "Admin can create items" do
       fill_in "Description", with: "New Description"
       fill_in "Price", with: "9.99"
       find(:css, "#category-check-#{@category1.id}").click
-      # upload image, optional
+      attach_file "Image", @fixture_image_path
       click_on "Create Item"
 
       expect(page).to have_content "Title can't be blank"
@@ -54,12 +56,3 @@ RSpec.feature "Admin can create items" do
     end
   end
 end
-
-# As an authenticated Admin:
-#     I can create an item.
-#       - An item must have a title, description and price.
-#       - An item must belong to at least one category.
-#       - The title and description cannot be empty.
-#       - The title must be unique for all items in the system.
-#       - The price must be a valid decimal numeric value and greater than zero.
-#       - The photo is optional. If not present, a stand-in photo is used. If desired the admin should be able to upload an image.

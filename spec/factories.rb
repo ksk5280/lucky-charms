@@ -40,6 +40,8 @@ FactoryGirl.define do
     title { generate(:item_name) }
     description
     price 1
-    image "/images/horseshoe.png"
+    image File.new(Rails.root.join("spec",
+                                   "support",
+                                   "lucky_test.png"))
   end
 end

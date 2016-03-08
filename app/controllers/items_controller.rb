@@ -18,7 +18,9 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
-    @item.categories= Category.all.select {|category| params[category.title] == "1"}
+    @item.categories = Category.all.select do |category|
+      params[category.title] == "1"
+    end
     if @item.save
       flash[:success] = "#{@item.title} has been created!"
       redirect_to item_path(@item.id)
@@ -32,6 +34,6 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:title, :description, :price)
+    params.require(:item).permit(:title, :description, :price, :image)
   end
 end
