@@ -4,7 +4,9 @@ class LineItem < ActiveRecord::Base
   belongs_to :order
   belongs_to :item
 
-  def subtotal
-    quantity * item.price
+  before_save :set_subtotal
+
+  def set_subtotal
+    self.subtotal = item.price * quantity
   end
 end

@@ -25,9 +25,7 @@ class Order < ActiveRecord::Base
   end
 
   def total
-    line_items.inject(0) do |total, line_item|
-      total + line_item.subtotal
-    end
+    line_items.sum(:subtotal)
   end
 
   def self.status_total(status)
