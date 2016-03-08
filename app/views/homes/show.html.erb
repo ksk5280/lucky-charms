@@ -40,21 +40,19 @@
   </a>
 </div>
 
-<div class="well">
-  <div class="text-center row">
-    <div class="padded-bottom">
-      <h1 class="green-font mousiness" >Featured Collections</h1>
-    </div>
-    <div class="categories">
-      <%= render partial: "categories/category", collection: @categories %>
-    </div>
+<div class="text-center row">
+  <div class="padded-top padded-bottom">
+    <h1 class="green-font mousiness" >Featured Collections</h1>
   </div>
-  <div class="text-center row">
-    <div class="padded-bottom padded-top">
-      <h1 class="green-font mousiness" >Featured Items</h1>
-    </div>
-    <div class="items">
-      <%= render partial: "items/item", collection: @items %>
-    </div>
+  <div class="categories">
+    <%= render partial: "categories/category", collection: @categories %>
+  </div>
+</div>
+<div class="text-center row">
+  <div class="padded-bottom padded-top">
+    <h1 class="green-font mousiness" >Featured Items</h1>
+  </div>
+  <div class="items">
+    <%= render partial: "items/item", collection: @items %>
   </div>
 </div>

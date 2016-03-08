@@ -1,11 +1,9 @@
-<div class="well">
-  <div class="text-center row">
-    <div class="padded-bottom">
-      <h1 class="green-font mousiness" ><%= "All #{@category.title} Products" %></h1>
-      <h4 class="green-font mousiness" >These glorious items will increase your luck.</h4>
-    </div>
-    <div class="items">
-      <%= render partial: "items/item", collection: @category.non_retired_items %>
-    </div>
+<div class="text-center row">
+  <div class="padded-bottom">
+    <h1 class="green-font mousiness" ><%= "All #{@category.title} Products" %></h1>
+    <h4 class="green-font mousiness" >These glorious items will increase your luck.</h4>
+  </div>
+  <div class="items">
+    <%= render partial: "items/item", collection: @category.non_retired_items %>
   </div>
 </div>

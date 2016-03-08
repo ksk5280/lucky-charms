@@ -1,0 +1,14 @@
+<tr>
+  <td class="mousiness text-center"><h5><%= link_to "##{order.id}", admin_order_path(order.id) %></h5></td>
+  <td class="mousiness text-center"><h5><%= order.status %></h5></td>
+  <td class="mousiness text-center"><h5><%= order.created_at.strftime("%B %-d, %Y") %></h5></td>
+  <% if order.status == "paid" %>
+    <td class="mousiness text-center"><%= button_to "Cancel order", order_path(order, status: "cancelled"), method: :patch, class: "btn btn-danger btn-font-size mousiness" %>
+    <%= button_to "Mark as completed", order_path(order, status: "completed"), method: :patch, class: "btn btn-success btn-font-size mousiness" %></td>
+  <% elsif order.status == "ordered" %>
+    <td class="mousiness text-center"><%= button_to "Cancel order", order_path(order, status: "cancelled"), method: :patch, class: "btn btn-danger btn-font-size mousiness"%>
+    <%= button_to "Mark as paid", order_path(order, status: "paid"), method: :patch, class: "btn btn-success btn-font-size mousiness"%></td>
+  <% else %>
+    <td></td>
+  <% end %>
+</tr>

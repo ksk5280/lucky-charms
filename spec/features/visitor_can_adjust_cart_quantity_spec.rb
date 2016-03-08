@@ -22,7 +22,7 @@ RSpec.feature "Visitor can adjust cart quantity" do
       expect(page).to have_content("Subtotal: $10.00")
     end
 
-    within(".cart-container") do
+    within(".cart-total") do
       expect(page).to have_content("Total: $10.00")
     end
 
@@ -36,7 +36,7 @@ RSpec.feature "Visitor can adjust cart quantity" do
       expect(page).to have_content("Subtotal: $20.00")
     end
 
-    within(".cart-container") do
+    within(".cart-total") do
       expect(page).to have_content("Total: $20.00")
     end
   end
@@ -57,7 +57,7 @@ RSpec.feature "Visitor can adjust cart quantity" do
       expect(page).to have_content("Qty. 1")
     end
 
-    within(".cart-container") do
+    within(".cart-total") do
       expect(page).to have_content("Total: $10.00")
     end
   end
@@ -73,7 +73,7 @@ RSpec.feature "Visitor can adjust cart quantity" do
         expect(page).not_to have_content("Subtotal: ")
       end
 
-      within(".cart-container") do
+      within(".cart-total") do
         expect(page).to have_content("Total: $0.00")
       end
     end

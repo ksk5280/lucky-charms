@@ -1,24 +1,22 @@
-<div class="cart-container well">
-  <div class="text-center row">
-    <div class="padded-bottom">
-      <h1 class="green-font mousiness">Your Cart</h1>
-    </div>
-    <div class="cart-items">
-      <% @cart_contents.each do |item, quantity| %>
-      <%= render partial: "cart_item", locals: {item: item, quantity: quantity} %>
-      <% end %>
-    </div>
+<div class="text-center row">
+  <div class="padded-bottom">
+    <h1 class="green-font mousiness">Your Cart</h1>
   </div>
-  <div class="text-right row">
-    <div class="padded-top">
-      <h2 class="green-font mousiness padded-right">Total: <%= @cart.total %></h2>
-    </div>
-  </div>
-  <div class="text-center row">
-    <% if current_user %>
-      <%= button_to "Checkout", orders_path, class: "btn btn-success btn-font-size mousiness "%>
-    <% else %>
-      <%= link_to "Checkout", login_path, class: "btn btn-success btn-font-size mousiness" %>
+  <div class="cart-items">
+    <% @cart_contents.each do |item, quantity| %>
+    <%= render partial: "cart_item", locals: {item: item, quantity: quantity} %>
     <% end %>
   </div>
+</div>
+<div class="text-right row cart-total">
+  <div class="padded-top">
+    <h2 class="green-font mousiness padded-right">Total: <%= @cart.total %></h2>
+  </div>
+</div>
+<div class="text-center row">
+  <% if current_user %>
+    <%= button_to "Checkout", orders_path, class: "btn btn-success btn-font-size mousiness "%>
+  <% else %>
+    <%= link_to "Checkout", login_path, class: "btn btn-success btn-font-size mousiness" %>
+  <% end %>
 </div>
