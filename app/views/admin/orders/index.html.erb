@@ -11,7 +11,7 @@
       </tr>
       <% @orders.each do |order| %>
         <tr>
-          <td class="mousiness"><h5><%= link_to "##{order.id}", order_path(order.id) %></h5></td>
+          <td class="mousiness"><h5><%= link_to "##{order.id}", admin_order_path(order.id) %></h5></td>
           <td class="mousiness"><h5><%= order.status %></h5></td>
           <td class="mousiness"><h5><%= order.created_at.strftime("%B %-d, %Y") %></h5></td>
         </tr>

@@ -1,6 +1,6 @@
 <div class = "well">
   <div class = "row mousiness text-center padded-bottom">
-    <h1 class=""><%= link_to "All Orders", orders_path %></h1>
+    <h1 class=""><%= link_to "All Orders", admin_orders_path %></h1>
     <h4>Order #<%= @order.id %></h4>
     <h4>Full Name: <%= @order.user.first_name %> <%= @order.user.last_name %></h4>
     <h4>Address: <%= @order.user.address %></h4>
