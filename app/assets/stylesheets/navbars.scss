@@ -1,0 +1,29 @@
+.navbar {
+  background-color: $white;
+  border: 0;
+  font-size: 22px;
+  letter-spacing: 4px;
+  margin-bottom: 0;
+  opacity: 0.9;
+}
+
+.navbar-center {
+  text-align: center;
+  width: 100%;
+
+  > li {
+    display: inline-block;
+    float: none;
+  }
+}
+
+.categories-nav-bar {
+  background-color: $translucentwhite;
+  border-left: 4px solid $white;
+  border-right: 4px solid $white;
+  border-top: 4px solid $white;
+  border-top-left-radius: 50px;
+  border-top-right-radius: 50px;
+  font-size: 24px;
+  text-align: center;
+}
