@@ -6,7 +6,7 @@ class WeatherController < ApplicationController
     result = Faraday.get("http://api.openweathermap.org/data/2.5/forecast?q=#{session[:city].downcase},us&units=imperial&APPID=#{weather_key}&mode=json")
     @forecast = JSON.parse(result.body, object_class: OpenStruct)
     @forecast = @forecast.list.select do |day_part|
-      DateTime.parse(day_part.dt_txt).strftime("%k %p") == "12 PM"
+      DateTime.parse(day_part.dt_txt).strftime("%k %p") == "15 PM"
     end[0..3]
     # binding.pry
   end
@@ -18,5 +18,4 @@ class WeatherController < ApplicationController
     session[:city] = params[:weather][:us_city]
     redirect_to weather_path(1)
   end
-
 end
