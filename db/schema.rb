@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160306224058) do
+ActiveRecord::Schema.define(version: 20160309034944) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(version: 20160306224058) do
     t.integer  "quantity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "subtotal"
   end
 
   add_index "line_items", ["item_id"], name: "index_line_items_on_item_id", using: :btree
@@ -70,6 +71,7 @@ ActiveRecord::Schema.define(version: 20160306224058) do
     t.string   "first_name"
     t.string   "last_name"
     t.string   "address"
+    t.string   "email"
   end
 
   add_foreign_key "category_items", "categories"
