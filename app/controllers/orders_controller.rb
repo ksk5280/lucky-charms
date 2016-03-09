@@ -8,15 +8,15 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @order = Order.new(status: "ordered")
-    @order.user = current_user
-    @cart.contents.each do |item, quantity|
-      @order.line_items << LineItem.new(item_id: item.to_i, quantity: quantity)
+    @order = OrderGenerator.generate(@cart, current_user)
+    if @order.save
+      session[:cart] = {}
+      flash[:success] = "Order was successfully placed!"
+      redirect_to order_path(@order.id)
+    else
+      flash.now[:danger] = "Checkout Error"
+      render "/cart_items/index"
     end
-    @order.save
-    session[:cart] = {}
-    flash[:success] = "Order was successfully placed!"
-    redirect_to order_path(@order.id)
   end
 
   def show
