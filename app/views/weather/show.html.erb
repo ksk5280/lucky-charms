@@ -1,13 +1,19 @@
-<p class="text-center">
-  <h1>Your Forecast</h1>
-</p>
+<h1 class="well text-center"><%= "#{@city.capitalize}'s Weather Forecast" %></h1>
+
 <% @forecast.each do |day_part| %>
   <div class="well col-md-3 mousiness green-font weather">
-    <p>
   <h3><%= day_part.dt_txt.to_datetime.strftime("%A") %></h3><br>
-  <h4><%= day_part.dt_txt.to_datetime.strftime("%l %P") %></h4><br>
-  <h2 class="text-center"><%= day_part.main.temp.to_i %></h3><br>
+  <h2 class="text-center"><%= day_part.main.temp.to_i %>&deg; f </h2><br>
   <h5><%= day_part.weather.first.description %></h5><br>
-    </p>
+    <% if day_part.weather.first.description.include?("rain") %>
+        <h4><span class="rainbow">
+          <!-- RAINBOW!<br> -->
+        </span></h4>
+          <%= image_tag "pot_o_gold.png", class: "pot-o-gold" %>
+    <% elsif day_part.weather.first.description.include?("clear sky")%>
+      <%= image_tag "sunshine.png", class: "sunshine" %>
+    <% else %>
+      <%= image_tag "leprechaun_face.png", class: "lephrechaun" %>
+    <% end %>
   </div>
 <% end %>
