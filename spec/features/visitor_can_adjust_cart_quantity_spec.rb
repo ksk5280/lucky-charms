@@ -2,11 +2,7 @@ require "rails_helper"
 
 RSpec.feature "Visitor can adjust cart quantity" do
   before(:each) do
-    cat1 = Category.create(title: "charms")
-    cat1.items.create(title: "Lucky Penny",
-                      description: "Shiny",
-                      price: 1000,
-                      image: "/images/Penny.png",)
+    @item = create(:item)
 
     visit "/items"
     click_on "Add to Cart"
@@ -16,14 +12,14 @@ RSpec.feature "Visitor can adjust cart quantity" do
 
   scenario "they can add additional items to the cart" do
     within(".cart-items") do
-      expect(page).to have_content("Lucky Penny")
-      expect(page).to have_content("$10.00")
+      expect(page).to have_content @item.title
+      expect(page).to have_content @item.price
       expect(page).to have_content("Qty. 1")
-      expect(page).to have_content("Subtotal: $10.00")
+      expect(page).to have_content("Subtotal: $0.01")
     end
 
     within(".cart-container") do
-      expect(page).to have_content("Total: $10.00")
+      expect(page).to have_content("Total: $0.01")
     end
 
     click_on "Increase quantity"
@@ -31,13 +27,13 @@ RSpec.feature "Visitor can adjust cart quantity" do
     expect(current_path).to eq("/cart")
 
     within(".cart-items") do
-      expect(page).to have_content("Lucky Penny")
+      expect(page).to have_content @item.title
       expect(page).to have_content("Qty. 2")
-      expect(page).to have_content("Subtotal: $20.00")
+      expect(page).to have_content("Subtotal: $0.02")
     end
 
     within(".cart-container") do
-      expect(page).to have_content("Total: $20.00")
+      expect(page).to have_content("Total: $0.02")
     end
   end
 
@@ -52,13 +48,13 @@ RSpec.feature "Visitor can adjust cart quantity" do
     expect(current_path).to eq(cart_path)
 
     within(".cart-items") do
-      expect(page).to have_content("Lucky Penny")
-      expect(page).to have_content("$10.00")
+      expect(page).to have_content @item.title
+      expect(page).to have_content @item.price
       expect(page).to have_content("Qty. 1")
     end
 
     within(".cart-container") do
-      expect(page).to have_content("Total: $10.00")
+      expect(page).to have_content("Total: $0.01")
     end
   end
 
@@ -67,8 +63,8 @@ RSpec.feature "Visitor can adjust cart quantity" do
       click_on "Decrease quantity"
 
       within(".cart-items") do
-        expect(page).not_to have_content("Lucky Penny")
-        expect(page).not_to have_content("$10.00")
+        expect(page).not_to have_content @item.title
+        expect(page).not_to have_content @item.price
         expect(page).not_to have_content("Qty. 1")
         expect(page).not_to have_content("Subtotal: ")
       end

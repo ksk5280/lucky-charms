@@ -1,6 +1,6 @@
 <div class="cart-item-container">
   <div class="col-md-3 cart-item-image">
-    <img src="<%= item.image %>" alt="<%= item.title %>">
+    <%= image_tag item.image, alt: item.title %>
   </div>
   <div class="col-md-6 cart-item-description">
     <h3 class="mousiness"><%= item.title %></h3>
