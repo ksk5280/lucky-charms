@@ -26,3 +26,5 @@ User.create(username: "johndoe", password: "password", role: 0, first_name: "Joh
 User.create(username: "janedoe", password: "password", role: 0, first_name: "Jane", last_name: "Doe", address: "1511 Blake Street")
 User.create(username: "user", password: "password", role: 0, first_name: "Tim", last_name: "Finnigan", address: "1234 Walker Street")
 User.create(username: "admin", password: "password", role: 1, first_name: "Anon", last_name: "Ymous", address: "The cloud")
+
+# File.expand_path("app/assets/images/filename", __dir__)

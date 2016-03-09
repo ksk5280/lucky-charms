@@ -12,7 +12,7 @@ RSpec.feature "visitor logs in" do
 
       expect(current_path).to eq "/dashboard"
       expect(page).to have_content("Logged in as #{user.username}")
-      expect(page).to have_content("Your Orders")
+      expect(page).to have_content("All Orders")
       expect(page).to have_content("Logout")
       expect(page).to have_content("My Account")
       expect(page).to_not have_content("Login")
@@ -36,18 +36,19 @@ RSpec.feature "visitor logs in" do
 
   context "visitor has items in cart before login" do
     scenario "sees items in cart" do
-      category = create(:category_with_items)
+      item1 = create(:item)
       user = create(:user)
 
       visit "/items"
-      category.items.each { |item| expect(page).to have_content(item.title) }
+
+      expect(page).to have_content item1.title
 
       within ".items" do
         first(:button, "Add to Cart").click
       end
 
       visit "/cart"
-      expect(page).to have_content(category.items.first.title)
+      expect(page).to have_content(item1.title)
 
       click_on "Login"
 
@@ -57,9 +58,7 @@ RSpec.feature "visitor logs in" do
 
       click_on "Cart"
 
-      expect(page).to have_content(category.items.first.title)
-      expect(page).to_not have_content(category.items[1].title)
-      expect(page).to_not have_content(category.items.last.title)
+      expect(page).to have_content(item1.title)
     end
   end
 end

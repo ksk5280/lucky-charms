@@ -26,7 +26,7 @@ RSpec.feature "User can checkout" do
     expect(page).to have_content("Order was successfully placed!")
     expect(page).to have_content("Cart (0)")
 
-    click_link "My Orders"
+    click_link "All Orders"
     within "table" do
       expect(page).to have_content "##{Order.last.id}"
     end

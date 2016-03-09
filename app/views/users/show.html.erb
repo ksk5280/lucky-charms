@@ -2,15 +2,13 @@
   <div class="text-center row">
     <div class="padded-bottom">
       <h1 class="green-font mousiness" >Account Information</h1>
-      <h3>Name: <%= @user.first_name %> <%= @user.last_name %></h3>
-      <h3>Address: <%= @user.address %></h3>
     </div>
-  </div>
-</div>
-<div class="well">
-  <div class="text-center row">
     <div class="padded-bottom">
-      <h1 class="green-font mousiness" >Your Orders</h1>
+
+      <h3 class="mousiness">Name: <%= @user.first_name %> <%= @user.last_name %></h3>
+      <h3 class="mousiness">Address: <%= @user.address %></h3>
     </div>
+    <%= link_to "Update Account", edit_user_path(@user.id), class: "btn btn-success btn-font-size mousiness " %>
+    <%= link_to "All Orders", orders_path, class: "btn btn-success btn-font-size mousiness "%>
   </div>
 </div>

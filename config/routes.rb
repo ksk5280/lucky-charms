@@ -1,18 +1,19 @@
 Rails.application.routes.draw do
-  resources :items, only: [:index, :show]
+  resources :items, only: [:index, :show, :new, :create]
 
   resources :cart_items, only: [:create, :destroy]
   root to: "homes#show"
   get "/cart", to: "cart_items#index"
 
-  resources :users, only: [:create, :new, :show]
+  resources :users, only: [:create, :new, :edit, :update, :show]
+  resources :orders, only: [:index, :create, :show, :update]
 
-  resources :orders, only: [:index, :create, :show]
   get "/dashboard", to: "users#show", as: "dashboard"
 
   namespace :admin do
     resources :dashboard, only: [:index]
     resources :orders, only: [:show]
+    get "/:status", to: "orders#index", as: "status"
   end
 
   get "/login", to: "sessions#new"
