@@ -29,17 +29,17 @@ RSpec.feature "User can view a single order" do
     within ".items" do
       expect(page).to have_content @item1.title
       expect(page).to have_content "Qty. #{@line_item1.quantity}"
-      expect(page).to have_content "Subtotal: #{@line_item1.formatted_subtotal}"
+      expect(page).to have_content "Subtotal: $0.02"
       expect(page).to have_content @item2.title
       expect(page).to have_content "Qty. #{@line_item2.quantity}"
-      expect(page).to have_content "Subtotal: #{@line_item2.formatted_subtotal}"
+      expect(page).to have_content "Subtotal: $0.03"
       expect(page).to have_link @item1.title
       expect(page).to have_link @item2.title
     end
 
     expect(page).to have_content "ordered"
     expect(page).to have_content "Total: $0.05"
-    expect(page).to have_content "Date Submitted: March 1, 2016"
+    expect(page).to have_content "Submitted on: March 1, 2016"
   end
 
   context "the order was completed" do

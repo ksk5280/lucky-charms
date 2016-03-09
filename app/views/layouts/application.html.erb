@@ -12,7 +12,9 @@
     <%= render partial: "shared/navbar", locals: { cart_count: @cart.item_count } %>
     <%= render partial: "shared/flash_messages" %>
     <%= render partial: "shared/categories_nav" %>
-    <%= yield %>
+    <div class="well">
+      <%= yield %>
+    </div>
   </div>
 
 </body>

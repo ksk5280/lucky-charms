@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(version: 20160309165700) do
     t.integer  "quantity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "subtotal"
   end
 
   add_index "line_items", ["item_id"], name: "index_line_items_on_item_id", using: :btree
@@ -73,6 +74,7 @@ ActiveRecord::Schema.define(version: 20160309165700) do
     t.string   "first_name"
     t.string   "last_name"
     t.string   "address"
+    t.string   "email"
   end
 
   add_foreign_key "category_items", "categories"

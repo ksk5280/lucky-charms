@@ -5,8 +5,21 @@ RSpec.describe Order, type: :model do
   it { should belong_to :user }
   it { should have_many :line_items }
   it { should have_many(:items).through(:line_items) }
-  statuses = %w(ordered paid cancelled completed)
-  it { should validate_inclusion_of(:status).in_array(statuses) }
+  it { should validate_inclusion_of(:status).in_array(Order.statuses) }
+
+  it "has specific statuses" do
+    expect(Order.statuses).to eq %w(ordered paid cancelled completed)
+  end
+
+  it "can determine its total price" do
+    order1 = Order.create(status: "ordered")
+    item1 = create(:item, price: 400)
+    item2 = create(:item, title: "Lucky 2", price: 77)
+    order1.line_items.create(item: item1, quantity: 35)
+    order1.line_items.create(item: item2, quantity: 3)
+
+    expect(order1.total).to eq 14_231
+  end
 
   it "can determine how many orders of each status" do
     Order.create(status: "ordered")

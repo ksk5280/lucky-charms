@@ -16,7 +16,7 @@ RSpec.feature "Admin can create items" do
     click_on "Create New Item"
     fill_in "Title", with: "New Item"
     fill_in "Description", with: "New Description"
-    fill_in "Price", with: "9.99"
+    fill_in "Price", with: "999"
     check(@category.title)
     attach_file "Image", @fixture_image_path
     click_on "Create Item"
@@ -28,7 +28,7 @@ RSpec.feature "Admin can create items" do
     within ".item" do
       expect(page).to have_content new_item.title
       expect(page).to have_content new_item.description
-      expect(page).to have_content new_item.formatted_price
+      expect(page).to have_content "$9.99"
       expect(page).to have_css("img[alt=\"#{new_item.title}\"]")
     end
   end
@@ -38,7 +38,7 @@ RSpec.feature "Admin can create items" do
       click_on "Create New Item"
       fill_in "Title", with: ""
       fill_in "Description", with: "New Description"
-      fill_in "Price", with: "9.99"
+      fill_in "Price", with: "999"
       check(@category.title)
       attach_file "Image", @fixture_image_path
       click_on "Create Item"
@@ -51,7 +51,7 @@ RSpec.feature "Admin can create items" do
       click_on "Create New Item"
       fill_in "Title", with: "New Item"
       fill_in "Description", with: "New Description"
-      fill_in "Price", with: "9.99"
+      fill_in "Price", with: "999"
       check(@category.title)
       click_on "Create Item"
 
@@ -62,7 +62,7 @@ RSpec.feature "Admin can create items" do
       within ".item" do
         expect(page).to have_content new_item.title
         expect(page).to have_content new_item.description
-        expect(page).to have_content new_item.formatted_price
+        expect(page).to have_content "$9.99"
         expect(page).to have_css("img[alt=\"#{new_item.title}\"]")
       end
     end
