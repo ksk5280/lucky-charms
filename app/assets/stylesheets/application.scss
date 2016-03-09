@@ -12,9 +12,11 @@
  *
  */
 
-
+@import url(https://fonts.googleapis.com/css?family=Mouse+Memoirs);
 @import "bootstrap-sprockets";
 @import "bootstrap";
-@import url(https://fonts.googleapis.com/css?family=Mouse+Memoirs);
-@import "custom";
+@import "fonts_colors";
+@import "shapes";
+@import "navbars";
+@import "items_carts";
 @import "landing_page";

@@ -41,7 +41,7 @@ RSpec.describe "Cart", type: :model do
     expect(item.title).to eq @item.title
     expect(item.description).to eq @item.description
     expect(item.price).to eq @item.price
-    expect(item.image).to eq @item.image
+    expect(item.image.instance).to eq @item.image.instance
     expect(quantity).to eq 4
   end
 
