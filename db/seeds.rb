@@ -6,11 +6,13 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+File.expand_path("app/assets/images/filename", __dir__)
+
 charms = Category.create(title: "Charms", created_at: Time.now, image: "charms.jpg")
 potions = Category.create(title: "Potions", created_at: Time.now, image: "felix_felicis.jpg")
 clothes = Category.create(title: "Clothes", created_at: Time.now, image: "lucky_socks.jpg")
 
-charms.items << Item.create(title: "Lucky Penny", description: "A shiny heads-up penny you found in the road!", price: 999 , image: "Penny.png")
+charms.items << Item.create(title: "Lucky Penny", description: "A shiny heads-up penny you found in the road!", price: 999 , image: File.new(Rails.root.join("spec", "support", "cartoon_penny.png"))
 charms.items << Item.create(title: "Horseshoe", description: "Keep the open side pointed up so the luck doesn't drain out!", price: 1499, image: "horseshoe.png")
 charms.items << Item.create(title: "Lucky Cat", description: "Wave Back!", price: 2499, image: "lucky_cat.png")
 
@@ -26,5 +28,3 @@ User.create(username: "johndoe", password: "password", role: 0, first_name: "Joh
 User.create(username: "janedoe", password: "password", role: 0, first_name: "Jane", last_name: "Doe", address: "1511 Blake Street")
 User.create(username: "user", password: "password", role: 0, first_name: "Tim", last_name: "Finnigan", address: "1234 Walker Street")
 User.create(username: "admin", password: "password", role: 1, first_name: "Anon", last_name: "Ymous", address: "The cloud")
-
-# File.expand_path("app/assets/images/filename", __dir__)
