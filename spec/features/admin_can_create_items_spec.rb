@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.feature "Admin can create items" do
   before(:each) do
     admin = create(:user, role: 1)
-    @category1 = create(:category)
+    @category = create(:category)
     @fixture_image_path = Rails.root.join("spec", "support", "lucky_test.png")
 
     visit "/login"
@@ -17,7 +17,7 @@ RSpec.feature "Admin can create items" do
     fill_in "Title", with: "New Item"
     fill_in "Description", with: "New Description"
     fill_in "Price", with: "9.99"
-    find(:css, "#item_categories").set(true)
+    check(@category.title)
     attach_file "Image", @fixture_image_path
     click_on "Create Item"
 
@@ -39,7 +39,7 @@ RSpec.feature "Admin can create items" do
       fill_in "Title", with: ""
       fill_in "Description", with: "New Description"
       fill_in "Price", with: "9.99"
-      find(:css, "#item_categories").set(true)
+      check(@category.title)
       attach_file "Image", @fixture_image_path
       click_on "Create Item"
       expect(page).to have_content "Title can't be blank"
@@ -52,7 +52,7 @@ RSpec.feature "Admin can create items" do
       fill_in "Title", with: "New Item"
       fill_in "Description", with: "New Description"
       fill_in "Price", with: "9.99"
-      find(:css, "#item_categories").set(true)
+      check(@category.title)
       click_on "Create Item"
 
       new_item = Item.last
