@@ -35,6 +35,5 @@ class Cart
     total = fetch_items.inject(0) do |acc, elem|
       acc + (elem[0].price * elem[1])
     end
-    "#{format('$%.2f', (total.to_f / 100))}"
   end
 end

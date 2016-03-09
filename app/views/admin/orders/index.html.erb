@@ -1,21 +1,10 @@
-<div class="cart-container well">
-  <div class="text-center row">
-    <div class="padded-bottom">
-      <h1 class="green-font mousiness"><%= @status %> Orders</h1>
-    </div>
-    <table class="table table-condensed table-hover orders orders-table">
-      <tr>
-        <th class="mousiness text-center"><h4>Order #</h4></th>
-        <th class="mousiness text-center"><h4>Status</h4></th>
-        <th class="mousiness text-center"><h4>Placed on</h4></th>
-      </tr>
-      <% @orders.each do |order| %>
-        <tr>
-          <td class="mousiness"><h5><%= link_to "##{order.id}", order_path(order.id) %></h5></td>
-          <td class="mousiness"><h5><%= order.status %></h5></td>
-          <td class="mousiness"><h5><%= order.created_at.strftime("%B %-d, %Y") %></h5></td>
-        </tr>
-      <% end %>
-    </table>
+<div class="text-center row">
+  <div class="padded-bottom">
+    <h1 class="green-font"><%= @status %> Orders</h1>
   </div>
+  <table class="table table-condensed table-hover orders orders-table">
+    <%= render partial: "admin/orders/status_counts" %>
+    <%= render partial: "admin/orders/table_headers" %>
+    <%= render partial: "admin/orders/order", collection: @orders %>
+  </table>
 </div>
