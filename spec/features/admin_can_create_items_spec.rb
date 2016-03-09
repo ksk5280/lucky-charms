@@ -17,19 +17,19 @@ RSpec.feature "Admin can create items" do
     fill_in "Title", with: "New Item"
     fill_in "Description", with: "New Description"
     fill_in "Price", with: "9.99"
-    find(:css, "#category-check-#{@category1.id}").click
+    find(:css, "#item_categories").set(true)
     attach_file "Image", @fixture_image_path
     click_on "Create Item"
 
     new_item = Item.last
     expect(current_path).to eq(item_path(new_item.id))
     expect(page).to have_content "#{new_item.title} has been created!"
+
     within ".item" do
       expect(page).to have_content new_item.title
       expect(page).to have_content new_item.description
       expect(page).to have_content new_item.formatted_price
-
-      expect(page).to have_css("img")
+      expect(page).to have_css("img[alt=\"#{new_item.title}\"]")
     end
   end
 
@@ -39,11 +39,32 @@ RSpec.feature "Admin can create items" do
       fill_in "Title", with: ""
       fill_in "Description", with: "New Description"
       fill_in "Price", with: "9.99"
-      find(:css, "#category-check-#{@category1.id}").click
+      find(:css, "#item_categories").set(true)
       attach_file "Image", @fixture_image_path
       click_on "Create Item"
-
       expect(page).to have_content "Title can't be blank"
+    end
+  end
+
+  context "admin can create an item without an image" do
+    scenario "sees default image for item" do
+      click_on "Create New Item"
+      fill_in "Title", with: "New Item"
+      fill_in "Description", with: "New Description"
+      fill_in "Price", with: "9.99"
+      find(:css, "#item_categories").set(true)
+      click_on "Create Item"
+
+      new_item = Item.last
+      expect(current_path).to eq(item_path(new_item.id))
+      expect(page).to have_content "#{new_item.title} has been created!"
+
+      within ".item" do
+        expect(page).to have_content new_item.title
+        expect(page).to have_content new_item.description
+        expect(page).to have_content new_item.formatted_price
+        expect(page).to have_css("img[alt=\"#{new_item.title}\"]")
+      end
     end
   end
 

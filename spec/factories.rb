@@ -36,10 +36,15 @@ FactoryGirl.define do
     "#{number} description"
   end
 
+  sequence :category, %w(1 2 3).cycle do |number|
+    "Category #{number}"
+  end
+
   factory :item do
     title { generate(:item_name) }
     description
     price 1
+    categories { create_list(:category, 1) }
     image File.new(Rails.root.join("spec",
                                    "support",
                                    "lucky_test.png"))
