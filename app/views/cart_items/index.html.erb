@@ -1,6 +1,6 @@
 <div class="text-center row">
   <div class="padded-bottom">
-    <h1 class="green-font mousiness">Your Cart</h1>
+    <h1 class="green-font">Your Cart</h1>
   </div>
   <div class="cart-items">
     <% @cart_contents.each do |item, quantity| %>
@@ -10,13 +10,13 @@
 </div>
 <div class="text-right row cart-total">
   <div class="padded-top">
-    <h2 class="green-font mousiness padded-right">Total: <%= format_price(@cart.total) %></h2>
+    <h2 class="green-font padded-right">Total: <%= format_price(@cart.total) %></h2>
   </div>
 </div>
 <div class="text-center row">
   <% if current_user %>
-    <%= button_to "Checkout", orders_path, class: "btn btn-success btn-font-size mousiness "%>
+    <%= button_to "Checkout", orders_path, class: "btn btn-success btn-font-size"%>
   <% else %>
-    <%= link_to "Checkout", login_path, class: "btn btn-success btn-font-size mousiness" %>
+    <%= link_to "Checkout", login_path, class: "btn btn-success btn-font-size" %>
   <% end %>
 </div>
