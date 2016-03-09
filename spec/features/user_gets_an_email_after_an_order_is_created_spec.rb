@@ -2,8 +2,8 @@ require "rails_helper"
 
 RSpec.feature "User gets an email after order is placed" do
   scenario "sees flash on screen saying email has been sent" do
-    item = create(:item)
-    user = User.create(username: "erinna",
+    create(:item)
+    User.create(username: "erinna",
                 password: "password",
                 first_name: "Erinna",
                 last_name: "Chen",
@@ -20,7 +20,8 @@ RSpec.feature "User gets an email after order is placed" do
     first(:link, "Cart").click
     click_on "Checkout"
 
-    expect(page).to have_content "An email has been sent to: erinna.chen@gmail.com"
+    confirmation = "An email has been sent to: erinna.chen@gmail.com"
+    expect(page).to have_content confirmation
     expect(ActionMailer::Base.deliveries.count).to eq 1
   end
 end

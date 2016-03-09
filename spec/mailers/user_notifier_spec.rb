@@ -1,28 +1,30 @@
 require "rails_helper"
 
 RSpec.describe UserNotifier, type: :mailer do
-  describe 'send order confirmation email' do
+  describe "send order confirmation email" do
     order = Order.new(id: 25, status: "ordered")
-    user = User.new(username: "erinna", email: "erinna.chen@gmail.com", orders: [order])
-    #mail = UserNotifier.send_confimation(order)
+    user = User.new(username: "erinna",
+                    first_name: "Erinna",
+                    last_name: "Chen",
+                    email: "erinna.chen@gmail.com",
+                    orders: [order])
+    mail = UserNotifier.send_confirmation(user)
 
-    it 'renders the subject' do
-      expect(mail.subject).to eql("Order #25 confirmation. Thank you for purchasing lucky charms!")
+    it "renders the subject" do
+      expect(mail.subject).to eql("Order #25 confirmation. Thank you, Erinna Chen, for purchasing lucky charms!")
     end
 
-    it 'renders the receiver email' do
+    it "renders the receiver email" do
       expect(mail.to).to eql([user.email])
     end
 
-    it 'renders the sender email' do
-      expect(mail.from).to eql(['noreply@example.com'])
+    it "renders the sender email" do
+      expect(mail.from).to eql(["noreply@example.com"])
     end
   end
 end
-
-
 # class Notifier < ActionMailer::Base
-#   default from: 'noreply@company.com'
+#   default from: "noreply@company.com'
 #
 #   def instructions(user)
 #     @name = user.name
