@@ -1,5 +1,5 @@
 <div class="well">
-  <div class="text-center mousiness green-font">
+  <div class="text-center green-font">
     <%= form_for(@item) do |f| %>
 
       <h4><%= f.label :title %></h4>
@@ -19,9 +19,9 @@
       </div>
 
       <h4><%= f.label :image %></h4>
-      <h4><%= f.file_field :image, class: 'form-control' %></h4>
+      <h4><%= f.file_field :image, class: "form-control" %></h4>
 
-      <h4><%= f.submit "Create Item", class:  "btn btn-success mousiness btn-font-size" %></h4>
+      <h4><%= f.submit "Create Item", class: "btn btn-success btn-font-size" %></h4>
 
     <% end %>
   </div>

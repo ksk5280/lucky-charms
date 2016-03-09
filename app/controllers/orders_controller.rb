@@ -8,15 +8,18 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @order = Order.new(status: "ordered")
+    @order = Order.new(status: "ordered", created_at: Time.now)
     @order.user = current_user
     @cart.contents.each do |item, quantity|
-      @order.line_items << LineItem.new(item_id: item.to_i, quantity: quantity)
+      @order.line_items.new(item_id: item.to_i,
+                            quantity: quantity,
+                            created_at: Time.now)
     end
-    @order.save
-    session[:cart] = {}
-    flash[:success] = "Order was successfully placed!"
-    redirect_to order_path(@order.id)
+    if @order.save
+      session[:cart] = {}
+      flash[:success] = "Order was successfully placed!"
+      redirect_to order_path(@order.id)
+    end
   end
 
   def show

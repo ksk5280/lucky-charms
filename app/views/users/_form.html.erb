@@ -1,0 +1,15 @@
+<div class="text-center green-font">
+  <%= form_for(@user) do |f| %>
+    <h4><%= f.label :username %></h4>
+    <h4><%= f.text_field :username %></h4>
+    <h4><%= f.label :password %></h4>
+    <h4><%= f.password_field :password %></h4>
+    <h4><%= f.label :first_name %></h4>
+    <h4><%= f.text_field :first_name %></h4>
+    <h4><%= f.label :last_name %></h4>
+    <h4><%= f.text_field :last_name %></h4>
+    <h4><%= f.label :address %></h4>
+    <h4><%= f.text_field :address %></h4>
+    <%= f.submit button_text, class: "btn btn-success btn-font-size" %>
+  <% end %>
+</div>
