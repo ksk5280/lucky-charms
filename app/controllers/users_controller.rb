@@ -41,7 +41,8 @@ class UsersController < ApplicationController
                                  :password,
                                  :first_name,
                                  :last_name,
-                                 :address)
+                                 :address,
+                                 :email)
   end
 
   def require_login

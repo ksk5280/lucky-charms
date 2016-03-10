@@ -16,12 +16,14 @@ RSpec.feature "User can only modify own info spec" do
       fill_in "First name", with: "Janice"
       fill_in "Last name", with: "Doer"
       fill_in "Address", with: "Union Station, Denver, CO 80202"
+      fill_in "Email", with: "jane@gmail.com"
 
       click_button "Update Account"
 
       expect(page).to have_content "Account successfully updated."
       expect(page).to have_content "Name: Janice Doer"
       expect(page).to have_content "Address: Union Station, Denver, CO 80202"
+      expect(page).to have_content "Email: jane@gmail.com"
       click_link "Logout"
 
       visit "/login"
