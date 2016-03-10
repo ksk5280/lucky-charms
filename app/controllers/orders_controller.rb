@@ -12,7 +12,8 @@ class OrdersController < ApplicationController
     if @order.save
       session[:cart] = {}
       flash[:success] = "Order was successfully placed!"
-      if UserNotifier.send_confirmation(current_user).deliver_now
+      if current_user.email
+        UserNotifier.send_confirmation(current_user).deliver_now
         flash[:success] += " An email has been sent to: #{current_user.email}"
       end
       redirect_to order_path(@order.id)

@@ -1,6 +1,7 @@
 class UserNotifier < ApplicationMailer
   def send_confirmation(user)
     if user.email
+      @order = user.orders.last
       mail(to: user.email,
            subject: order_confirmation_string(user) + thank_you(user))
     end

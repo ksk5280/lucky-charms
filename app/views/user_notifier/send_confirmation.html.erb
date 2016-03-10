@@ -1,10 +1,11 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Order confirmation</title>
-  </head>
-  <body>
-    Lucky Charms
-  </body>
-</html>
+<h1>Order #<%= @order.id %></h1>
+<h3>You purchased:</h3>
+<br>
+<% @order.line_items.each do |line_item| %>
+  <h4><%= line_item.item.title %></h4>
+  <h5><%= line_item.item.description %></h5>
+  <h5>Quantity: <%= line_item.quantity %></h5>
+  <h5>Subtotal: <%= "$#{format("%.2f", line_item.subtotal/100.0)}" %></h5>
+  <br>
+<% end %>
+<h3>Total: <%= "$#{format("%.2f", @order.total/100.0)}" %></h3>
