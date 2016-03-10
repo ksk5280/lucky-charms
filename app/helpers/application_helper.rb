@@ -8,4 +8,8 @@ module ApplicationHelper
                 class: "btn item-btn btn-font-size"
     end
   end
+
+  def secret_session?
+    !!session[:serious]
+  end
 end

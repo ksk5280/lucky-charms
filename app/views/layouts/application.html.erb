@@ -14,8 +14,11 @@
     <%= render partial: "shared/categories_nav" %>
     <div class="well">
       <%= yield %>
-    </div>
-  </div>
 
+    </div>
+    <% if secret_session? %>
+      <%= render partial: "shared/easter_egg_bar" %>
+    <% end %>
+  </div>
 </body>
 </html>

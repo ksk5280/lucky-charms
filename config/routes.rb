@@ -21,7 +21,9 @@ Rails.application.routes.draw do
   delete "/logout", to: "sessions#destroy"
 
   resources :weather, only: [:create, :show, :new]
+  get "/homes", to: "homes#index"
 
   resources :categories, only: [:index]
+
   get "/:category", to: "categories#show", as: "category"
 end
