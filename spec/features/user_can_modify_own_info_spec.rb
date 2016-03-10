@@ -35,26 +35,11 @@ RSpec.feature "User can only modify own info spec" do
     end
   end
 
-  context "Logged in user tries to edit other user's info" do
-    scenario "sees a 404 page" do
-      user1 = create(:user)
-      user2 = User.create(username: "johndoe", password: "password")
-      visit "/login"
-      fill_in "Username", with: user1.username
-      fill_in "Password", with: "password"
-      click_button "Login"
-
-      visit "/users/#{user2.id}/edit"
-
-      expect(page).to have_content "The page you were looking for doesn't exist"
-    end
-  end
-
   context "Not logged in visitor tries to edit an existing user's info" do
     scenario "sees a 404 page" do
       user1 = create(:user)
 
-      visit "/users/#{user1.id}/edit"
+      visit edit_user_path
 
       expect(page).to have_content "The page you were looking for doesn't exist"
     end

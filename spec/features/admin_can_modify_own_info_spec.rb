@@ -31,19 +31,4 @@ RSpec.feature "Admin can only modify own info spec" do
       expect(page).to have_content "Logged in as newusername"
     end
   end
-
-  context "Logged in admin tries to edit other user's info" do
-    scenario "sees a 404 page" do
-      admin = create(:user, role: 1)
-      user2 = User.create(username: "johndoe", password: "password")
-      visit "/login"
-      fill_in "Username", with: admin.username
-      fill_in "Password", with: "password"
-      click_button "Login"
-
-      visit "/users/#{user2.id}/edit"
-
-      expect(page).to have_content "The page you were looking for doesn't exist"
-    end
-  end
 end
