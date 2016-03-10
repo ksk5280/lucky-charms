@@ -16,4 +16,16 @@ class Item < ActiveRecord::Base
                            "image/png",
                            "image/gif"] }
   validates :categories, presence: true
+
+  def self.find_gold
+    find_by(title: "Pot O' Gold").id
+  end
+
+  def self.find_sunshine
+    find_by(title: "Four-Leaf Clover").id
+  end
+
+  def self.find_leprechaun
+    find_by(title: "Uncatchable Leprechaun").id
+  end
 end
