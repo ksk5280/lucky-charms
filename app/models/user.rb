@@ -5,4 +5,7 @@ class User < ActiveRecord::Base
   validates :password, presence: true
 
   enum role: %w(user admin)
+  def fullname
+    "#{first_name} #{last_name}"
+  end
 end
