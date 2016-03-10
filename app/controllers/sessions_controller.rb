@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
       if @user.admin?
         redirect_to admin_dashboard_index_path
       else
-        redirect_to dashboard_path(id: @user.id)
+        redirect_to dashboard_path
       end
     else
       flash.now[:danger] = "Invalid login details. Please try again."
@@ -20,6 +20,6 @@ class SessionsController < ApplicationController
 
   def destroy
     session[:user_id] = nil
-    redirect_to "/"
+    redirect_to root_path
   end
 end
