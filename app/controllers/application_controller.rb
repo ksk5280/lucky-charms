@@ -9,9 +9,14 @@ class ApplicationController < ActionController::Base
   helper_method :current_admin?
   helper_method :format_price
   helper_method :user_orders_path
+  helper_method :require_admin
 
   def current_user
     @user ||= User.find(session[:user_id]) if session[:user_id]
+  end
+
+  def require_admin
+    render file: "public/404" unless current_admin?
   end
 
   def current_admin?

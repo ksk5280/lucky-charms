@@ -28,7 +28,7 @@ Item.create(title: "Uncatchable Leprechaun", description: "You're not having luc
 
 Item.create(title: "Pot O' Gold", description: "After a good rain, you were lucky enough to find the pot of gold at the end of the rainbow!", price: 99999, image: "https://s3.amazonaws.com/lucky2/pot_o_gold.png", categories: [Category.find_by(title: "Weather")])
 
-Item.create(title: "Four-Leaf Clover", description: "The sun is shining so brightly that spotting this little guy wasn't a matter of luck!", price: 999, image: "https://s3.amazonaws.com/lucky2/sunshine.png", categories: [Category.find_by(title: "Weather")])
+Item.create(title: "Four-Leaf Clover", description: "The sun is shining so brightly that spotting this little guy wasn't a matter of luck!", price: 999, image: "https://s3.amazonaws.com/lucky2/four-leaf-clover.png", categories: [Category.find_by(title: "Weather")])
 
 User.create(username: "johndoe", password: "password", role: 0, first_name: "John", last_name: "Doe", address: "1510 Blake Street")
 User.create(username: "janedoe", password: "password", role: 0, first_name: "Jane", last_name: "Doe", address: "1511 Blake Street")

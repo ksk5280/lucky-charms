@@ -1,10 +1,13 @@
 class UsersController < ApplicationController
+  before_action :require_login, only: [:show, :edit, :update]
+  before_action :set_user, except: [:create, :new]
+
   def create
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
       flash[:success] = "Logged in as #{@user.username}"
-      redirect_to dashboard_path(id: @user.id)
+      redirect_to dashboard_path
     else
       flash[:danger] = "Invalid account details. Please try again."
       render :new
@@ -16,22 +19,17 @@ class UsersController < ApplicationController
   end
 
   def show
-    user_is_current_user?
-    @user = current_user
   end
 
   def edit
-    user_is_current_user?
-    @user = current_user
   end
 
   def update
-    current_user.update(user_params)
-    if current_user.save
+    @user.update(user_params)
+    if @user.save
       flash[:success] = "Account successfully updated."
-      redirect_to dashboard_path(id: current_user.id)
+      redirect_to dashboard_path
     else
-      @user = current_user
       render :edit
     end
   end
@@ -43,12 +41,15 @@ class UsersController < ApplicationController
                                  :password,
                                  :first_name,
                                  :last_name,
-                                 :address)
+                                 :address,
+                                 :email)
   end
 
-  def user_is_current_user?
-    if !current_user || current_user.id != params[:id].to_i
-      render file: "public/404"
-    end
+  def require_login
+    render file: "public/404" unless current_user
+  end
+
+  def set_user
+    @user = current_user
   end
 end

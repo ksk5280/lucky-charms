@@ -10,6 +10,11 @@ RSpec.feature "User can view a single order" do
     @line_item1 = @order.line_items.create(item: @item1, quantity: 2)
     @line_item2 = @order.line_items.create(item: @item2, quantity: 3)
 
+    @user2 = create(:user, username: "johndoe")
+    @order2 = @user2.orders.create(status: "ordered",
+                                   created_at: Time.new(2016, 3, 5))
+    @line_item3 = @order2.line_items.create(item: @item1, quantity: 6)
+
     visit root_path
     first(:link, "Login").click
     fill_in "Username", with: @user.username
@@ -63,6 +68,14 @@ RSpec.feature "User can view a single order" do
       expect(current_path).to eq(item_path(@item1.id))
       expect(page).to_not have_button "Add to Cart"
       expect(page).to have_content "Item has been retired"
+    end
+  end
+
+  context "tries to access order not belonging to them" do
+    scenario "user sees 404 page" do
+      visit "/orders/#{@order2.id}"
+
+      expect(page).to have_content("Out of Luck!")
     end
   end
 end

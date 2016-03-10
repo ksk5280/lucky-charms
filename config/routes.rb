@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   root to: "homes#show"
   get "/cart", to: "cart_items#index"
 
-  resources :users, only: [:create, :new, :edit, :update, :show]
+  resource :user, only: [:create, :new, :edit, :update, :show]
   resources :orders, only: [:index, :create, :show, :update]
 
   get "/dashboard", to: "users#show", as: "dashboard"
@@ -19,6 +19,8 @@ Rails.application.routes.draw do
   get "/login", to: "sessions#new"
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
+
+  resources :weather, only: [:create, :show, :new]
 
   resources :categories, only: [:index]
   get "/:category", to: "categories#show", as: "category"

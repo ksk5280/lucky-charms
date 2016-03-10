@@ -18,6 +18,7 @@
 /coverage
 
 .DS_Store
+
 /public/system
 
 /public/assets
