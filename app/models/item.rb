@@ -7,15 +7,12 @@ class Item < ActiveRecord::Base
   validates :title, presence: true, uniqueness: { case_sensitive: false }
   validates :description, presence: true
   validates :price, presence: true, numericality: { greater_than: 0 }
-  has_attached_file :image, default_url: "horseshoe.png"
-  validates_attachment :image,
-                       content_type: {
-                         content_type: [
-                           "image/jpg",
-                           "image/jpeg",
-                           "image/png",
-                           "image/gif"] }
   validates :categories, presence: true
+  has_attached_file :image,
+    default_url: "default.png",
+    path: ":url",
+    url: "/:filename"
+  validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
 
   def self.find_gold
     find_by(title: "Pot O' Gold").id

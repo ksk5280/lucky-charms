@@ -45,8 +45,6 @@ FactoryGirl.define do
     description
     price 1
     categories { create_list(:category, 1) }
-    image File.new(Rails.root.join("spec",
-                                   "support",
-                                   "lucky_test.png"))
+    image "https://s3.amazonaws.com/lucky2/lucky_test.png"
   end
 end
