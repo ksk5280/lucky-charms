@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+  before_action :require_admin, only: [:update]
   def index
     if current_user
       @orders = current_user.orders
@@ -24,7 +25,8 @@ class OrdersController < ApplicationController
   end
 
   def show
-    @order = Order.find(params[:id])
+    @order = current_user.orders.find_by(id: params[:id])
+    render file: "public/404" unless @order
   end
 
   def update
