@@ -1,4 +1,3 @@
-
 # File.expand_path("app/assets/images/filename", __dir__)
 
 charms = Category.create(title: "Charms", created_at: Time.now, image: "charms.jpg")

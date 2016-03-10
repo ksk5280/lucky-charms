@@ -1,0 +1,21 @@
+<div class="well">
+  <h1 class="text-center"><%= "#{@city.capitalize}'s Weather Forecast" %></h1>
+
+  <div class="row">
+  <% @forecast.each do |day_part| %>
+    <div class="weather-well col-md-3 green-font weather">
+    <h3><%= day_part.dt_txt.to_datetime.strftime("%A") %></h3><br>
+    <h2 class="text-center"><%= day_part.main.temp.to_i %>&deg; f </h2><br>
+    <h5><%= day_part.weather.first.description %></h5><br>
+      <% if day_part.weather.first.description.include?("rain") %>
+        <a href="/items/<%= Item.find_gold %>"><%= image_tag "pot_o_gold.png", class: "pot-o-gold" %></a>
+      <% elsif day_part.weather.first.description.include?("clear sky")%></a>
+        <a href="/items/<%= Item.find_sunshine %>"><%= image_tag "sunshine.png", class: "sunshine" %></a>
+      <% else %>
+        <a href="/items/<%= Item.find_leprechaun %>"><%= image_tag "leprechaun_face.png", class: "leprechaun" %></a>
+      <% end %>
+    </div>
+  <% end %>
+  </div>
+
+</div>
