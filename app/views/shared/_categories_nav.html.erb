@@ -2,14 +2,14 @@
   <div class="text-center row">
     <ul class="nav navbar-nav navbar-center">
       <% @top_categories.each do |category| %>
-      <li class="mousiness green-font">
+      <li>
         <%= link_to "#{category.title}", category_path(category: category.title), class: "green-font" %>
       </li>
       <% end %>
-      <li class="mousiness">
+      <li>
         <%= link_to "all categories", categories_path, class: "green-font" %>
       </li>
-      <li class="mousiness">
+      <li>
         <%= link_to "all items", items_path, class: "green-font" %>
       </li>
       <li class="mousiness"><a href="<%= new_weather_path %>" class="green-font">Check the Weather</a></li>

@@ -1,0 +1,87 @@
+.item-description {
+  background-color: $white;
+  border: 3px solid $mediumgreen;
+  border-radius: 5px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+}
+
+.item-display {
+  background-color: $smokywhite;
+  border: 2px solid $white;
+  border-radius: 10px;
+  margin-bottom: 25px;
+  padding: 25px 0;
+}
+
+.item-display img {
+  background-color: $white;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  width: 80%;
+}
+
+.item-btn {
+  background-color: $mediumgreen;
+  color: $white;
+  margin-bottom: 10px;
+  width: 60%;
+}
+
+.item-subtotal {
+  border-bottom: 2px solid $white;
+  border-top: 2px solid $white;
+  width: 100%;
+}
+
+.btn-pricing {
+  color: $darkblue;
+  font-family: "Source Sans Pro", "HelveticaNeue"," Helvetica Neue", sans-serif;
+  font-size: 22px;
+}
+
+.cart-item-container {
+  background-color: $white;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+  width: 90%;
+}
+
+.cart-item-image img {
+  background-color: $white;
+  border-radius: 5px;
+  margin: 20px;
+  vertical-align: middle;
+  width: 80%;
+}
+
+.cart-item-description {
+  vertical-align: middle;
+}
+
+.cart-item-buttons {
+  font-size: 22px;
+  margin: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 15px;
+  width: 80%;
+}
+
+.cart-link {
+  margin-bottom: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 20px;
+}
+
+.orders-table {
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+
+}

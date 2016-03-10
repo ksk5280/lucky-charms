@@ -4,11 +4,9 @@ class LineItem < ActiveRecord::Base
   belongs_to :order
   belongs_to :item
 
-  def subtotal
-    (quantity * item.price).to_f / 100
-  end
+  before_save :set_subtotal
 
-  def formatted_subtotal
-    number_to_currency(subtotal)
+  def set_subtotal
+    self.subtotal = item.price * quantity
   end
 end

@@ -11,16 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160306224058) do
+ActiveRecord::Schema.define(version: 20160309165700) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "categories", force: :cascade do |t|
     t.string   "title"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string   "image"
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+    t.string   "image",      default: "default.png"
   end
 
   create_table "category_items", force: :cascade do |t|
@@ -35,10 +35,13 @@ ActiveRecord::Schema.define(version: 20160306224058) do
     t.string   "title"
     t.string   "description"
     t.integer  "price"
-    t.string   "image"
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
-    t.boolean  "retired",     default: false
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+    t.boolean  "retired",            default: false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   create_table "line_items", force: :cascade do |t|
@@ -47,6 +50,7 @@ ActiveRecord::Schema.define(version: 20160306224058) do
     t.integer  "quantity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "subtotal"
   end
 
   add_index "line_items", ["item_id"], name: "index_line_items_on_item_id", using: :btree
@@ -70,6 +74,7 @@ ActiveRecord::Schema.define(version: 20160306224058) do
     t.string   "first_name"
     t.string   "last_name"
     t.string   "address"
+    t.string   "email"
   end
 
   add_foreign_key "category_items", "categories"

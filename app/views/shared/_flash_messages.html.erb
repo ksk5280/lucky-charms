@@ -1,6 +1,6 @@
 <div class="flash-messages">
   <% flash.each do |name, msg| %>
-    <div class= "alert alert-<%= "#{name}" %> mousiness btn-font-size" role: "alert">
+    <div class= "alert alert-<%= "#{name}" %> btn-font-size" role: "alert">
       <%= sanitize(msg) %>
     </div>
   <% end %>

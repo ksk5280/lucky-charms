@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :items, only: [:index, :show]
+  resources :items, only: [:index, :show, :new, :create]
 
   resources :cart_items, only: [:create, :destroy]
   root to: "homes#show"
@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :dashboard, only: [:index]
-    resources :orders, only: [:show]
+    resources :orders, only: [:show, :index]
     get "/:status", to: "orders#index", as: "status"
   end
 
