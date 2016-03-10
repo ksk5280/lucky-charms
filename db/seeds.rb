@@ -6,12 +6,22 @@ potions = Category.create(title: "Potions", created_at: Time.now, image: "felix_
 clothes = Category.create(title: "Clothes", created_at: Time.now, image: "lucky_socks.jpg")
 weather = Category.create(title: "Weather", created_at: Time.now, image: "sunshine.png")
 
-Item.create(title: "Lucky Penny", description: "A shiny heads-up penny you found in the road!", price: 999 , image: File.new("#{Rails.root}/app/assets/images/cartoon_penny.png"), categories: [Category.find_by(title: "Charms")])
+# Item.create(title: "Lucky Penny", description: "A shiny heads-up penny you found in the road!", price: 999 , image: File.new("#{Rails.root}/assets/images/cartoon_penny.png"), categories: [Category.find_by(title: "Charms")])
+Item.create(title: "Lucky Penny", description: "A shiny heads-up penny you found in the road!", price: 999 , image: File.new("cartoon_penny.png"), categories: [Category.find_by(title: "Charms")])
+
+Item.create(title: "Penny test2", description: "A shiny heads-up penny you found in the road!", price: 999 , image: "https://s3.amazonaws.com/lucky2/cartoon_penny.png", categories: [Category.find_by(title: "Charms")])
+
+
+
+
 Item.create(title: "Horseshoe", description: "Keep the open side pointed up so the luck doesn't drain out!", price: 1499, image: File.new("#{Rails.root}/app/assets/images/horseshoe.png"), categories: [Category.find_by(title: "Charms")])
+
 Item.create(title: "Maneki-Neko", description: "So lucky!", price: 999, image: File.new("#{Rails.root}/app/assets/images/lucky_cat.png"), categories: [Category.find_by(title: "Charms")])
 
 Item.create(title: "Felix Felicis", description: "A luck-potion so powerful even it's placebo effects make you a better keeper!", price: 9999, image: File.new("#{Rails.root}/app/assets/images/felix_felicis.jpg"), categories: [Category.find_by(title: "Potions")])
+
 Item.create(title: "Love Potion #9", description: "It won't force anyone to fall in love with you, that would be creepy, but it will make you luckier in love (if you're not creepy). 9th try at the formula. We're pretty sure we've got it right this time.", price: 9999, image: File.new("#{Rails.root}/app/assets/images/love_potion_9.jpg"), categories: [Category.find_by(title: "Potions")])
+
 Item.create(title: "And the Crowd Goes Mild!", description: "Sometimes you just want to be able to make that shot with the wadded up paper in the trash can across the room. You won't make big bucks off this one, but you'll probably get chuckles of approval.", price: 4999, image: File.new("#{Rails.root}/app/assets/images/mild_luck_potion.jpg"), categories: [Category.find_by(title: "Potions")])
 
 Item.create(title: "Lucky Pat Wey Jersey", description: "A game worn jersey from former NHL player, Pat Wey!", price: 29999 , image: File.new("#{Rails.root}/app/assets/images/pat_wey_jersey.jpg"), categories: [Category.find_by(title: "Clothes")])
