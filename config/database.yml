@@ -81,5 +81,3 @@ test:
 production:
   <<: *default
   database: lucky-charms_production
-  username: lucky-charms
-  password: <%= ENV['LUCKY-CHARMS_DATABASE_PASSWORD'] %>

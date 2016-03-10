@@ -8,17 +8,18 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @order = Order.new(status: "ordered", created_at: Time.now)
-    @order.user = current_user
-    @cart.contents.each do |item, quantity|
-      @order.line_items.new(item_id: item.to_i,
-                            quantity: quantity,
-                            created_at: Time.now)
-    end
+    @order = OrderGenerator.generate(@cart, current_user)
     if @order.save
       session[:cart] = {}
       flash[:success] = "Order was successfully placed!"
+      if current_user.email
+        UserNotifier.send_confirmation(current_user).deliver_now
+        flash[:success] += " An email has been sent to: #{current_user.email}"
+      end
       redirect_to order_path(@order.id)
+    else
+      flash.now[:danger] = "Checkout Error"
+      render "/cart_items/index"
     end
   end
 
