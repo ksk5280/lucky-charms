@@ -9,7 +9,7 @@ class Item < ActiveRecord::Base
   validates :price, presence: true, numericality: { greater_than: 0 }
   validates :categories, presence: true
   has_attached_file :image,
-    default_url: "horseshoe.png",
+    default_url: "default.png",
     path: ":url",
     url: "/:filename"
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
