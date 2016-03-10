@@ -13,7 +13,7 @@ class OrdersController < ApplicationController
     if @order.save
       session[:cart] = {}
       flash[:success] = "Order was successfully placed!"
-      if current_user.email
+      if current_user.email && !current_user.email.empty?
         UserNotifier.send_confirmation(current_user).deliver_now
         flash[:success] += " An email has been sent to: #{current_user.email}"
       end
